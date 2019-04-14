@@ -1,3 +1,24 @@
-<p>
-  login works!
-</p>
+<div id="loginBox">
+  <form nz-form [formGroup]="loginForm" class="form" (ngSubmit)="submitForm()">
+    <!-- 用户名 -->
+    <nz-form-item>
+      <nz-form-label [nzSm]="7" [nzXs]="24">userName</nz-form-label>
+      <nz-form-control [nzSm]="7" [nzXs]="24">
+        <input type="text" nz-input formControlName="userName">
+      </nz-form-control>
+    </nz-form-item>
+    <!-- 密码 -->
+    <nz-form-item>
+      <nz-form-label [nzSm]="7" [nzXs]="24">password</nz-form-label>
+      <nz-form-control [nzSm]="7" [nzXs]="24">
+        <input type="text" nz-input formcontrolName="password">
+      </nz-form-control>
+    </nz-form-item>
+    <!-- 按钮 -->
+    <nz-form-item nz-row>
+      <nz-form-control [nzOffset]="7"> 
+        <button nz-button nzType="primary" [disabled]="!loginForm.valid">{{loginForm.valid}}-Register</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</div>
