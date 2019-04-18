@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.less']
 })
 export class LoginComponent implements OnInit {
-
+  loginType = 'acount';
   loginForm: FormGroup;
   constructor(private fb: FormBuilder) { }
 
@@ -20,5 +20,8 @@ export class LoginComponent implements OnInit {
   }
   submitForm(): void {
     console.log(this.loginForm.controls);
+  }
+  public switchLoginType(type) {
+    this.loginType = type;
   }
 }
