@@ -1,0 +1,20 @@
+<nz-table #basicTable [nzData]="tableData" nzBordered>
+  <thead>
+    <tr *ngFor="let tr of header">
+      <ng-container *ngFor="let th of tr.list">
+        <th [attr.colspan]="th.col" *ngIf="th.col && th.col >1" [nzShowSort]="th.isSort" [nzSortKey]="th.sortKey">{{th.title}}</th>
+        <th [attr.rowspan]="th.row" *ngIf="th.row && th.row >1" [nzShowSort]="th.isSort" [nzSortKey]="th.sortKey">{{th.title}}</th>
+        <th *ngIf="!th.row && !th.col" [nzShowSort]="th.isSort" [nzSortKey]="th.sortKey">{{th.title}}</th>
+      </ng-container>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tr of basicTable.data">
+      <td *ngFor="let td of columnlist">
+        {{tr[td.field]}}
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+
+<span class="abc" title="北京向日葵科技有限公司">北京向日葵科技有限公司</span>

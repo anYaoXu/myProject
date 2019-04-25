@@ -4,16 +4,17 @@ import { LoginComponent } from './login.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 const loginRoutes: Routes = [
   {
     path: '',
     component: LoginComponent,
-    children: [ ]
+    children: []
   }
 ];
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, ForgetPasswordComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
