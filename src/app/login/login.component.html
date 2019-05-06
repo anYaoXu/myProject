@@ -56,6 +56,17 @@
                   <i class="icon-uk-password login-prefix"></i>
                 </nz-form-control>
               </nz-form-item>
+              <!-- 忘记密码 -->
+              <nz-form-item>
+                <nz-form-control [nzSm]="24" [nzXs]="24">
+                  <span style="text-align:right">忘记密码</span>
+                </nz-form-control>
+              </nz-form-item>
+              <div nz-row>
+                <div nz-col nzSpan="24">
+                  <span style="text-align:right">忘记密码</span>
+                </div>
+              </div>
               <!-- 按钮 -->
               <nz-form-item nz-row>
                 <nz-form-control [nzOffset]="7">
@@ -64,10 +75,15 @@
                     nzType="primary"
                     [disabled]="!loginForm.valid"
                   >
-                    {{ loginForm.valid }}-Register
+                    {{ loginForm.valid }}-登录
                   </button>
                 </nz-form-control>
               </nz-form-item>
+              <div nz-row>
+                <div nz-col nzSpan="24">
+                  点击登录，表示阅读及同意<a href="">用户协议</a>
+                </div>
+              </div>
             </form>
           </div>
         </div>
