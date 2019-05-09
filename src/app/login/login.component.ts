@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NzMessageService } from 'ng-zorro-antd';
+import { NzMessageService, NzModalService } from 'ng-zorro-antd';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { UtilService } from '../core/util.service';
 
 @Component({
   selector: 'app-login',
@@ -11,8 +13,9 @@ export class LoginComponent implements OnInit {
   loginType = 'acount';
   loginForm: FormGroup;
   constructor(private fb: FormBuilder,
-    private message: NzMessageService) { }
-
+    private message: NzMessageService,
+    private modalService: NzModalService,
+    private utilService: UtilService) { }
   ngOnInit() {
     this.loginForm = this.fb.group(
       {
@@ -35,5 +38,17 @@ export class LoginComponent implements OnInit {
   }
   $(name) {
     return this.$control(name).value;
+  }
+  forget() {
+    // 打开忘记密码弹窗
+    const modal = this.modalService.create({
+      nzTitle: '忘记密码',
+      nzContent: ForgetPasswordComponent,
+      nzComponentParams: {},
+      nzWidth: 800,
+      nzFooter: UtilService.getModalFooter((_modal) => {
+        // 确定按钮执行的方法
+      }, () => { modal.destroy(); }, false)
+    });
   }
 }
