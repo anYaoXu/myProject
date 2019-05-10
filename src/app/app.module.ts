@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import zh from '@angular/common/locales/zh';
+import { CoreModule } from './core/core.module';
 
 registerLocaleData(zh);
 
@@ -24,7 +25,8 @@ registerLocaleData(zh);
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CoreModule
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent]
