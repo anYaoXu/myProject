@@ -21,6 +21,8 @@ const loginRoutes: Routes = [
     FormsModule,
     NgZorroAntdModule,
     RouterModule.forChild(loginRoutes)
-  ]
+  ],
+  entryComponents: [ForgetPasswordComponent]
+
 })
 export class LoginModule { }
