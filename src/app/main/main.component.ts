@@ -10,6 +10,10 @@ export class MainComponent implements OnInit {
     {
       list: [
         {
+          row: 2,
+          isCheckedBox: true,
+        },
+        {
           title: '年级',
           row: 2,
           isSort: true,
@@ -75,6 +79,7 @@ export class MainComponent implements OnInit {
   ];
   tableData = [
     {
+      id: 1,
       a: '一年级',
       b: 10,
       c: 20,
@@ -84,6 +89,7 @@ export class MainComponent implements OnInit {
       g: 66
     },
     {
+      id: 2,
       a: '二年级',
       b: 10,
       c: 20,
@@ -93,6 +99,7 @@ export class MainComponent implements OnInit {
       g: 66
     },
     {
+      id: 3,
       a: '三年级',
       b: 10,
       c: 20,
@@ -102,9 +109,14 @@ export class MainComponent implements OnInit {
       g: 66
     }
   ];
+  isAllChecked = false;
+  mapOfCheckId: { [key: string]: boolean } = {};
+  isShowCheckBox = true;
   constructor() { }
 
   ngOnInit() {
   }
-
+  onCheckAll(value) {
+    console.log(value);
+  }
 }

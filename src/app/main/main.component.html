@@ -1,17 +1,64 @@
+<input type="button" (click)="onCheckAll(1)" />
 <nz-table #basicTable [nzData]="tableData" nzBordered>
   <thead>
     <tr *ngFor="let tr of header">
       <ng-container *ngFor="let th of tr.list">
-        <th [attr.colspan]="th.col" *ngIf="th.col && th.col >1" [nzShowSort]="th.isSort" [nzSortKey]="th.sortKey">{{th.title}}</th>
-        <th [attr.rowspan]="th.row" *ngIf="th.row && th.row >1" [nzShowSort]="th.isSort" [nzSortKey]="th.sortKey">{{th.title}}</th>
-        <th *ngIf="!th.row && !th.col" [nzShowSort]="th.isSort" [nzSortKey]="th.sortKey">{{th.title}}</th>
+        <th
+          *ngIf="th.isCheckedBox && th.col && th.col > 1"
+          nzShowCheckbox
+          [attr.colspan]="th.col"
+          [(nzChecked)]="isAllChecked"
+          (nzCheckChange)="onCheckAll($event)"
+        ></th>
+        <th
+          *ngIf="th.isCheckedBox && th.row && th.row > 1"
+          nzShowCheckbox
+          [attr.rowspan]="th.row"
+          [(nzChecked)]="isAllChecked"
+          (nzCheckChange)="onCheckAll($event)"
+        ></th>
+        <th
+          *ngIf="th.isCheckedBox && !th.row && !th.col"
+          nzShowCheckbox
+          [attr.rowspan]="th.row"
+          [(nzChecked)]="isAllChecked"
+          (nzCheckChange)="onCheckAll($event)"
+        ></th>
+        <th
+          [attr.colspan]="th.col"
+          *ngIf="!th.isCheckedBox && th.col && th.col > 1"
+          [nzShowSort]="th.isSort"
+          [nzSortKey]="th.sortKey"
+        >
+          {{ th.title }}
+        </th>
+        <th
+          [attr.rowspan]="th.row"
+          *ngIf="!th.isCheckedBox && th.row && th.row > 1"
+          [nzShowSort]="th.isSort"
+          [nzSortKey]="th.sortKey"
+        >
+          {{ th.title }}
+        </th>
+        <th
+          *ngIf="!th.isCheckedBox && !th.row && !th.col"
+          [nzShowSort]="th.isSort"
+          [nzSortKey]="th.sortKey"
+        >
+          {{ th.title }}
+        </th>
       </ng-container>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let tr of basicTable.data">
+      <td
+        *ngIf="isShowCheckBox"
+        nzShowCheckbox
+        [(nzChecked)]="mapOfCheckId[tr.id]"
+      ></td>
       <td *ngFor="let td of columnlist">
-        {{tr[td.field]}}
+        {{ tr[td.field] }}
       </td>
     </tr>
   </tbody>
