@@ -1,3 +1,4 @@
+import { FormControl } from '@angular/forms';
 import { Injectable, Inject } from '@angular/core';
 
 /* 工具接口 */
@@ -33,5 +34,47 @@ export class UtilService {
                     onClick
                 }
         ];
+    }
+    /* *
+     * 去前后空格后判断是否为空
+     * @param {FormControl} control
+     * @returns {any}
+     */
+    static required(control: FormControl) {
+        if (typeof control.value === 'string') {
+            return control.value.trim().length === 0 ? { required: true, error: true } : null;
+        } else if (control.value instanceof Array) {
+            return control.value.length === 0 ? { required: true, error: true } : null;
+        } else if (control.value !== 0) {
+            return control.value ? null : { required: true, error: true };
+        } else {
+            return null;
+        }
+    }
+    /* *
+    * 去前后空格判断上限长度
+    */
+    static maxLength(maxLength: number) {
+        return function (control: FormControl) {
+            const value = control.value;
+            if (value && value.trim) {
+                if (value.trim().length > maxLength) {
+                    return { maxlength: true, error: true }
+                }
+            }
+        };
+    }
+    /*
+     * 去前后空格判断下限长度
+    */
+    static minLength(minLength: number) {
+        return function (control: FormControl) {
+            const value = control.value;
+            if (value && value.trim) {
+                if (value.trim().length < minLength) {
+                    return { maxlength: true, error: true }
+                }
+            }
+        }
     }
 }
