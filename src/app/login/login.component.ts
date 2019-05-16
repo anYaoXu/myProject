@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
       nzWidth: 800,
       nzFooter: UtilService.getModalFooter((_modal) => {
         // 确定按钮执行的方法
-      }, () => { modal.destroy(); }, false)
+      }, () => { modal.destroy(); }, true)
     });
   }
 }
