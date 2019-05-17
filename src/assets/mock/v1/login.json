@@ -1,0 +1,10 @@
+{
+    "code": 200,
+    "msg": "",
+    "data": {
+        "user": {
+            "name": "xuyanru",
+            "menulist": []
+        }
+    }
+}

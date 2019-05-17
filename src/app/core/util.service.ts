@@ -1,11 +1,17 @@
 import { FormControl } from '@angular/forms';
 import { Injectable, Inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { urls } from './urls.model';
+import { environment } from 'src/environments/environment';
 
 /* 工具接口 */
 @Injectable()
 
 export class UtilService {
-    constructor() { }
+    private static urls = urls;
+    constructor(
+        private http: HttpClient
+    ) { }
     /* *
     * 获取默认的模态框底部按钮组
     * @param onClick  ok按钮确认事件，必须传入
@@ -76,5 +82,23 @@ export class UtilService {
                 }
             }
         }
+    }
+    /*
+    * 获取请求的url
+    * @param urlKey
+    * @param paramsId
+    * @returns {string}
+    */
+    static getUrl(urlKey, paramsId?) {
+        const _url = UtilService.urls[urlKey];
+        if (_url && _url.url && _url.url.startWith(environment.tempPath){
+
+        })
+    }
+    /*
+     *通用的post 请求
+     */
+    post(url, params: any = {}) {
+        return this.http.post()
     }
 }
