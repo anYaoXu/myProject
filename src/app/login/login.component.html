@@ -9,37 +9,19 @@
         <div nz-col nzSpan="8">
           <div class="form-box">
             <div class="form-header">
-              <div
-                class="form-header-item"
-                [ngClass]="loginType === 'acount' ? 'active' : ''"
-                (click)="switchLoginType('acount')"
-              >
+              <div class="form-header-item" [ngClass]="loginType === 'acount' ? 'active' : ''" (click)="switchLoginType('acount')">
                 账号登录
               </div>
-              <div
-                class="form-header-item"
-                [ngClass]="loginType === 'tel' ? 'active' : ''"
-                (click)="switchLoginType('tel')"
-              >
+              <div class="form-header-item" [ngClass]="loginType === 'tel' ? 'active' : ''" (click)="switchLoginType('tel')">
                 快捷登录
               </div>
             </div>
-            <form
-              nz-form
-              [formGroup]="loginForm"
-              class="form"
-              (ngSubmit)="submitForm()"
-            >
+            <form nz-form [formGroup]="loginForm" class="form" (ngSubmit)="submitForm()">
               <!-- 用户名 -->
               <nz-form-item>
                 <!-- <nz-form-label [nzSm]="7" [nzXs]="24">userName</nz-form-label> -->
                 <nz-form-control [nzSm]="24" [nzXs]="24">
-                  <input
-                    type="text"
-                    nz-input
-                    formControlName="userName"
-                    placeholder="请输入登录账号"
-                  />
+                  <input type="text" nz-input formControlName="userName" placeholder="请输入登录账号" />
                   <i class="icon-uk-account login-prefix"></i>
                 </nz-form-control>
               </nz-form-item>
@@ -47,12 +29,7 @@
               <nz-form-item>
                 <!-- <nz-form-label [nzSm]="7" [nzXs]="24">password</nz-form-label> -->
                 <nz-form-control [nzSm]="24" [nzXs]="24">
-                  <input
-                    type="password"
-                    nz-input
-                    formcontrolName="password"
-                    placeholder="请输入密码"
-                  />
+                  <input type="password" nz-input formcontrolName="password" placeholder="请输入密码" />
                   <i class="icon-uk-password login-prefix"></i>
                 </nz-form-control>
               </nz-form-item>
@@ -64,19 +41,16 @@
               </div>
               <!-- 按钮 -->
               <nz-form-item nz-row>
-                <nz-form-control [nzOffset]="7">
-                  <button
-                    nz-button
-                    nzType="primary"
-                    [disabled]="!loginForm.valid"
-                  >
+                <nz-form-control>
+                  <button nz-button nzType="primary" [disabled]="!loginForm.valid" nzBlock>
                     {{ loginForm.valid }}-登录
                   </button>
                 </nz-form-control>
               </nz-form-item>
               <div nz-row>
                 <div nz-col nzSpan="24">
-                  点击登录，表示阅读及同意<a href="">用户协议</a>
+                  点击登录，表示阅读及同意
+                  <a href="">用户协议</a>
                 </div>
               </div>
             </form>

@@ -91,14 +91,14 @@ export class UtilService {
     */
     static getUrl(urlKey, paramsId?) {
         const _url = UtilService.urls[urlKey];
-        if (_url && _url.url && _url.url.startWith(environment.tempPath){
+        // if (_url && _url.url && _url.url.startWith(environment.tempPath){
 
-        })
+        // })
     }
     /*
      *通用的post 请求
      */
     post(url, params: any = {}) {
-        return this.http.post()
+        // return this.http.post()
     }
 }
