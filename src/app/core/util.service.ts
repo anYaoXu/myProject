@@ -3,6 +3,7 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { urls } from './urls.model';
 import { environment } from 'src/environments/environment';
+import { apiPathKey } from '../shared/shared.model';
 
 /* 工具接口 */
 @Injectable()
@@ -91,14 +92,60 @@ export class UtilService {
     */
     static getUrl(urlKey, paramsId?) {
         const _url = UtilService.urls[urlKey];
-        // if (_url && _url.url && _url.url.startWith(environment.tempPath){
-
-        // })
+        if (_url && _url.url && _url.url.startWith(environment.tempPath)) {
+            // _url 为 object  并且url 直接是以 http 开头
+            return _url.urls;
+        } else if (_url && typeof _url === 'string' && _url.startsWith(environment.tempPath)) {
+            // _url 为字符串 并且 _url 直接是以http 开头
+            return _url;
+        } else {
+            // _url 不是以 http 开头
+            const getSafeStr = (str: string) => {
+                if (str.slice(-1) === '/') {
+                    return str.slice(0, str.length - 1);
+                } else {
+                    return;
+                }
+            };
+            let path = getSafeStr(environment.apiPath);  // 去掉最后一个/
+            // 如果localStorage 中 设置了请求的服务 从 localStorage 中取path
+            const localStorage_apiPath = localStorage.getItem(apiPathKey);
+            if (environment.apiPathChangeable && localStorage && localStorage_apiPath) {
+                environment.apiPath = path = getSafeStr(localStorage_apiPath);
+            }
+            let realKey = urlKey;
+            let id = '';
+            if (urlKey.includes('/')) {
+                realKey = realKey.slice(0, urlKey.indexof('/'));  // 得到 / 前面的值
+                id = urlKey.slice(urlKey.indexof('/') + 1);  // 得到 / 后面的 为参数
+            }
+            const realUrl = typeof UtilService.urls[realKey] === 'string' ?
+                UtilService.urls[realKey] : UtilService.urls[realKey].url;
+            // 拼接url 如果有参数将参数拼接进去
+            const url = realUrl + (id ? `/${id}` : (paramsId === undefined ? '' : `/${paramsId}`));
+            return UtilService.urls[realKey].isStatic ? (environment.deployPath + '/assets/mock' + url + '.json') : (path + url + '/');
+        }
+    }
+    /*
+     * 组装公共参数
+     */
+    static getCommonParams(params, method = 'get') {
+        const data = null;
+        delete params.id;
+        return {
+            // data: JSON.stringify(UtilService.deepTrim(params)),
+            data: JSON.stringify(params),
+            req_type: '10',
+            token: '',
+            bodyparams: '',
+            method,
+            action: params.action || ''
+        };
     }
     /*
      *通用的post 请求
      */
     post(url, params: any = {}) {
-        // return this.http.post()
+        return this.http.post(UtilService.getUrl(url, params.id), UtilService.getCommonParams(params, 'post'));
     }
 }

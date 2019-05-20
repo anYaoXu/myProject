@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService, NzModalService } from 'ng-zorro-antd';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { UtilService } from '../core/util.service';
+import { HttpRes } from '../shared/shared.model';
 
 @Component({
   selector: 'app-login',
@@ -48,6 +49,13 @@ export class LoginComponent implements OnInit {
       nzWidth: 800,
       nzFooter: UtilService.getModalFooter((_modal) => {
         // 确定按钮执行的方法
+        this.utilService.post('/login', {}).subscribe((result: HttpRes) => {
+          if (result.code === 200) {
+            this.message.success('保存成功');
+          } else {
+            this.message.error(result.msg);
+          }
+        });
       }, () => { modal.destroy(); }, true)
     });
   }

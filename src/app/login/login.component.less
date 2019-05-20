@@ -19,7 +19,7 @@ nz-content {
     width: 100%;
     height: 100%;
     & > div {
-      height: 100%;      
+      height: 100%;
       .form-box {
         width: 330px;
         height: 430px;
@@ -29,69 +29,80 @@ nz-content {
         .form-header {
           width: 100%;
           height: 50px;
-          line-height: 40px;        
-          .form-header-item{
-              width: 50%;
-              height: 100%;
-              border-top:7px solid #f7f7f7;
-              float: left;
-              text-align: center;
-              border-radius: 4px 4px 0 0;  
-              box-sizing: border-box;
-              background-color: #f7f7f7;
-              cursor: pointer;
-              &.active{          
-                border-top:7px solid red;
-                background-color: #fff;
-              }
+          line-height: 40px;
+          .form-header-item {
+            width: 50%;
+            height: 100%;
+            border-top: 7px solid #f7f7f7;
+            float: left;
+            text-align: center;
+            border-radius: 4px 4px 0 0;
+            box-sizing: border-box;
+            background-color: #f7f7f7;
+            cursor: pointer;
+            &.active {
+              border-top: 7px solid red;
+              background-color: #fff;
+            }
           }
         }
         .form {
           width: 100%;
           height: calc(100% - 50px);
           padding: 20px 40px;
-          .item{
+          .item {
             display: inline-block;
             width: 100%;
             height: 40px;
           }
-          input{
-              padding: 0 25px;
-              border: none;
-              border-bottom: 1px solid #e8e8e8;
-              outline: none !important;
-              border-radius: 0;
-              padding-top: 15px;
-              .common-height
+          input {
+            padding: 0 25px;
+            border: none;
+            border-bottom: 1px solid #e8e8e8;
+            outline: none !important;
+            border-radius: 0;
+            padding-top: 15px;
+            .common-height;
           }
-          .login-prefix{
-              left: 3px;
-              .login-icon
+          .login-prefix {
+            left: 3px;
+            .login-icon;
           }
-          ::ng-deep .ant-input:focus{
-              box-shadow: none;
+          ::ng-deep .ant-input:focus {
+            box-shadow: none;
           }
         }
       }
     }
     & > div:last-child {
-        display: flex;
-        display: -webkit-flex;
-        flex-direction: row;
-        align-items: center;
-      }
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: row;
+      align-items: center;
+    }
   }
 }
 
 #login-box ::ng-deep .ant-form-item {
   margin: 0;
 }
-.login-icon{
-    display: inline-block;
-    position: absolute;
-    top: 25%;
+.login-icon {
+  display: inline-block;
+  position: absolute;
+  top: 25%;
 }
-.common-height{
-    height: 44px;
-    line-height: 44px;
+.common-height {
+  height: 44px;
+  line-height: 44px;
+}
+.form-height {
+  height: 44px;
+  line-height: 44px;
+  cursor: pointer;
+}
+.t-a-c {
+  text-align: center;
+}
+.t-a-r {
+  text-align: right;
 }

@@ -12,6 +12,11 @@ export class ForgetPasswordComponent implements OnInit {
   @Input() data;
   constructor(private fb: FormBuilder) { }
   form;
+  disabledInput = true;
+  countryCodeList = [
+    { code: 1, name: '+86 中国大陆' },
+    { code: 2, name: '+00 国外' }
+  ];
   ngOnInit() {
     const validataList = [
       UtilService.required,
@@ -20,11 +25,11 @@ export class ForgetPasswordComponent implements OnInit {
       LoginService.validPassword,
     ];
     this.form = this.fb.group({
-      countrycode: ['+86 中国大陆'],
+      countrycode: [1],
       mobile: [null, [UtilService.required]],
       vcode: [null, [UtilService.required]],
       newpwd: [null, [...validataList, this.confirmationValidator('repwd')]],
-      repwd: [null, [...validataList, this.confirmationValidator('newpwd')]]
+      repwd: [{ value: null, disabled: this.disabledInput }, [...validataList, this.confirmationValidator('newpwd')]]
     });
     console.log('ssssss', this.data);
   }

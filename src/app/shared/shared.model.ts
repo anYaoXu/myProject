@@ -1,7 +1,20 @@
+export interface HttpRes {
+    code: number;
+    msg: string;
+    data: any | {
+        results?: Array<any> | {
+            list?: Array<any>,
+            total?: number
+        },
+        pageNumber?: number,
+        pageSize?: number,
+        total?: number
+    };
+}
 // 全局的localstroagekey
 const projectPreFix = 'XX';
 export const userInfoKey = projectPreFix + '_userInfoKey_';
-
+export const apiPathKey = projectPreFix + '_apiPathKey_';
 /*
 全局正则表达式
 */
