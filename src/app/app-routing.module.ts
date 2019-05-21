@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: './login/login.module#LoginModule'
   },
   {
+    path: 'protocol',
+    loadChildren: './protocol/protocol.module#ProtocolModule'
+  },
+  {
     path: 'main',
     loadChildren: './main/main.module#MainModule'
   },
