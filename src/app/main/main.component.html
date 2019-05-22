@@ -65,3 +65,17 @@
 </nz-table>
 
 <span class="abc" title="北京向日葵科技有限公司">北京向日葵科技有限公司</span>
+
+<div class="parentDrag">
+  <div
+    cdkDropList
+    class="example-list"
+    (cdkDropListDropped)="drop($event)"
+    cdkDropListOrientation="horizontal"
+  >
+    <div class="example-box" *ngFor="let movie of movies" cdkDrag>
+      <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+      {{ movie }}
+    </div>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-main',
@@ -112,11 +113,56 @@ export class MainComponent implements OnInit {
   isAllChecked = false;
   mapOfCheckId: { [key: string]: boolean } = {};
   isShowCheckBox = true;
+  timePeriods = [
+    '1age',
+    '2age',
+    '3age',
+    '4age',
+    '5age',
+    '6age',
+    '7age',
+    '8age',
+    '9age',
+    '10age',
+    '11age',
+    '12age',
+    '13age',
+    '14age',
+    '15age',
+    '16age',
+    '17age',
+    '18age',
+    '19age',
+  ];
+  movies = [
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    '11',
+    '12',
+    '13',
+    '14',
+    '15',
+    '16',
+    '17',
+    '18',
+    '19',
+  ];
   constructor() { }
 
   ngOnInit() {
   }
   onCheckAll(value) {
     console.log(value);
+  }
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.movies, event.previousIndex, event.currentIndex);
   }
 }

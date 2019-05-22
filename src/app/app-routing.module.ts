@@ -20,6 +20,10 @@ const routes: Routes = [
     loadChildren: './main/main.module#MainModule'
   },
   {
+    path: 'drop',
+    loadChildren: './drag-drop/cdk-drag-drop.module#CdkDragDropModule'
+  },
+  {
     path: '**',  // 路径通配符 当所有请求的url 不在前面的定义中，路由会选择此路由 相当于 404  not found 的页面
     pathMatch: 'full',
     redirectTo: '/login'
