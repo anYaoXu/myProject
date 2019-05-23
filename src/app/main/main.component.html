@@ -3,48 +3,16 @@
   <thead>
     <tr *ngFor="let tr of header">
       <ng-container *ngFor="let th of tr.list">
-        <th
-          *ngIf="th.isCheckedBox && th.col && th.col > 1"
-          nzShowCheckbox
-          [attr.colspan]="th.col"
-          [(nzChecked)]="isAllChecked"
-          (nzCheckChange)="onCheckAll($event)"
-        ></th>
-        <th
-          *ngIf="th.isCheckedBox && th.row && th.row > 1"
-          nzShowCheckbox
-          [attr.rowspan]="th.row"
-          [(nzChecked)]="isAllChecked"
-          (nzCheckChange)="onCheckAll($event)"
-        ></th>
-        <th
-          *ngIf="th.isCheckedBox && !th.row && !th.col"
-          nzShowCheckbox
-          [attr.rowspan]="th.row"
-          [(nzChecked)]="isAllChecked"
-          (nzCheckChange)="onCheckAll($event)"
-        ></th>
-        <th
-          [attr.colspan]="th.col"
-          *ngIf="!th.isCheckedBox && th.col && th.col > 1"
-          [nzShowSort]="th.isSort"
-          [nzSortKey]="th.sortKey"
-        >
+        <th *ngIf="th.isCheckedBox && th.col && th.col > 1" nzShowCheckbox [attr.colspan]="th.col" [(nzChecked)]="isAllChecked" (nzCheckChange)="onCheckAll($event)"></th>
+        <th *ngIf="th.isCheckedBox && th.row && th.row > 1" nzShowCheckbox [attr.rowspan]="th.row" [(nzChecked)]="isAllChecked" (nzCheckChange)="onCheckAll($event)"></th>
+        <th *ngIf="th.isCheckedBox && !th.row && !th.col" nzShowCheckbox [attr.rowspan]="th.row" [(nzChecked)]="isAllChecked" (nzCheckChange)="onCheckAll($event)"></th>
+        <th [attr.colspan]="th.col" *ngIf="!th.isCheckedBox && th.col && th.col > 1" [nzShowSort]="th.isSort" [nzSortKey]="th.sortKey">
           {{ th.title }}
         </th>
-        <th
-          [attr.rowspan]="th.row"
-          *ngIf="!th.isCheckedBox && th.row && th.row > 1"
-          [nzShowSort]="th.isSort"
-          [nzSortKey]="th.sortKey"
-        >
+        <th [attr.rowspan]="th.row" *ngIf="!th.isCheckedBox && th.row && th.row > 1" [nzShowSort]="th.isSort" [nzSortKey]="th.sortKey">
           {{ th.title }}
         </th>
-        <th
-          *ngIf="!th.isCheckedBox && !th.row && !th.col"
-          [nzShowSort]="th.isSort"
-          [nzSortKey]="th.sortKey"
-        >
+        <th *ngIf="!th.isCheckedBox && !th.row && !th.col" [nzShowSort]="th.isSort" [nzSortKey]="th.sortKey">
           {{ th.title }}
         </th>
       </ng-container>
@@ -52,11 +20,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let tr of basicTable.data">
-      <td
-        *ngIf="isShowCheckBox"
-        nzShowCheckbox
-        [(nzChecked)]="mapOfCheckId[tr.id]"
-      ></td>
+      <td *ngIf="isShowCheckBox" nzShowCheckbox [(nzChecked)]="mapOfCheckId[tr.id]"></td>
       <td *ngFor="let td of columnlist">
         {{ tr[td.field] }}
       </td>
@@ -68,12 +32,7 @@
 
 <div class="parentDrag">
   <!-- 2019-05-22 开始 -->
-  <div
-    cdkDropList
-    class="example-list"
-    (cdkDropListDropped)="drop1($event)"
-    cdkDropListOrientation="horizontal"
-  >
+  <div cdkDropList class="example-list" (cdkDropListDropped)="drop1($event)" cdkDropListOrientation="horizontal">
     <div class="example-box" *ngFor="let movie of movies" cdkDrag>
       <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
       {{ movie }}
@@ -81,23 +40,13 @@
   </div>
   <!-- 2019-05-22 结束 -->
   <!-- 2019-05-23 开始 -->·
-  <div cdkDropListGroup style="width: 1500px; border:1px solid green">
+  <div cdkDropListGroup style="width: 280px; border:1px solid green">
     <div class="example-container">
-      <div
-        cdkDropList
-        class="example-list"
-        (cdkDropListDropped)="drop($event)"
-        [cdkDropListData]="list"
-        cdkDropListOrientation="horizontal"
-        *ngFor="let list of lists"
-      >
-        <div
-          class="example-box"
-          *ngFor="let movie of list"
-          cdkDrag
-          [cdkDragData]="movie"
-        >
+      <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)" [cdkDropListData]="list" cdkDropListOrientation="horizontal"
+        *ngFor="let list of lists">
+        <div class="example-box" *ngFor="let movie of list" cdkDrag [cdkDragData]="movie">
           <!-- <div class="example-custom-placeholder" *cdkDragPlaceholder></div> -->
+          <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
           {{ movie }}
         </div>
       </div>

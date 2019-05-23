@@ -179,5 +179,24 @@ export class MainComponent implements OnInit {
         event.previousIndex,
         event.currentIndex);
     }
+    // console.log(this.lists);
+    this.lists = this.resetPositionOfList(this.lists);
+  }
+  resetPositionOfList(lists, groupNum = 5) {
+    const return_list = [];
+    const all_list = [];
+    lists.map(list => {
+      all_list.push(...list);
+    });
+    let child_list = [];
+    all_list.map((item, index) => {
+      child_list.push(item);
+      if ((index + 1) % 5 === 0) {
+        return_list.push(child_list);
+        child_list = [];
+      }
+    });
+    console.log(return_list);
+    return return_list;
   }
 }
