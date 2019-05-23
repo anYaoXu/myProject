@@ -67,10 +67,11 @@
 <span class="abc" title="北京向日葵科技有限公司">北京向日葵科技有限公司</span>
 
 <div class="parentDrag">
+  <!-- 2019-05-22 开始 -->
   <div
     cdkDropList
     class="example-list"
-    (cdkDropListDropped)="drop($event)"
+    (cdkDropListDropped)="drop1($event)"
     cdkDropListOrientation="horizontal"
   >
     <div class="example-box" *ngFor="let movie of movies" cdkDrag>
@@ -78,4 +79,29 @@
       {{ movie }}
     </div>
   </div>
+  <!-- 2019-05-22 结束 -->
+  <!-- 2019-05-23 开始 -->·
+  <div cdkDropListGroup style="width: 1500px; border:1px solid green">
+    <div class="example-container">
+      <div
+        cdkDropList
+        class="example-list"
+        (cdkDropListDropped)="drop($event)"
+        [cdkDropListData]="list"
+        cdkDropListOrientation="horizontal"
+        *ngFor="let list of lists"
+      >
+        <div
+          class="example-box"
+          *ngFor="let movie of list"
+          cdkDrag
+          [cdkDragData]="movie"
+        >
+          <!-- <div class="example-custom-placeholder" *cdkDragPlaceholder></div> -->
+          {{ movie }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 2019-05-23 结束 -->
 </div>

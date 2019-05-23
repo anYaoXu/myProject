@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-main',
@@ -155,6 +155,11 @@ export class MainComponent implements OnInit {
     '18',
     '19',
   ];
+  lists = [
+    [1, 2, 3, 4, 5],
+    [6, 7, 8, 9, 10],
+    [11, 12, 13, 14, 15],
+  ];
   constructor() { }
 
   ngOnInit() {
@@ -162,7 +167,17 @@ export class MainComponent implements OnInit {
   onCheckAll(value) {
     console.log(value);
   }
-  drop(event: CdkDragDrop<string[]>) {
+  drop1(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.movies, event.previousIndex, event.currentIndex);
+  }
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
   }
 }
