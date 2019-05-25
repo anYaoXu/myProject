@@ -1,15 +1,21 @@
 import { NgModule } from '@angular/core';
-import { ScrollbarDirective } from './directives/scrollbar.directive'
+import { CommonModule } from '@angular/common';
+import { ScrollbarDirective } from './directives/scrollbar.directive';
+import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { TablesComponent } from './tables/tables.component';
 
 @NgModule({
     declarations: [
-        ScrollbarDirective
+        ScrollbarDirective,
+        TablesComponent
     ],
     imports: [
-
+        NgZorroAntdModule,
+        CommonModule
     ],
     exports: [
-        ScrollbarDirective
+        ScrollbarDirective,
+        TablesComponent
     ]
 })
 

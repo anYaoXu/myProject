@@ -53,6 +53,32 @@ export class MainComponent implements OnInit {
       ]
     }
   ];
+  // header = [
+  //   {
+  //     list: [
+  //       { isCheckedBox: true, },
+  //       { title: '年级' },
+  //       {
+  //         title: '一班'
+  //       },
+  //       {
+  //         title: '二班'
+  //       },
+  //       {
+  //         title: '三班'
+  //       },
+  //       {
+  //         title: '一班'
+  //       },
+  //       {
+  //         title: '二班'
+  //       },
+  //       {
+  //         title: '三班',
+  //       }
+  //     ]
+  //   }
+  // ];
   columnlist = [
     {
       field: 'a',
@@ -111,7 +137,6 @@ export class MainComponent implements OnInit {
     }
   ];
   isAllChecked = false;
-  mapOfCheckId: { [key: string]: boolean } = {};
   isShowCheckBox = true;
   timePeriods = [
     '1age',
@@ -160,13 +185,21 @@ export class MainComponent implements OnInit {
     [6, 7, 8, 9, 10],
     [11, 12, 13, 14, 15],
   ];
+  listOfAllData = [];
   constructor() { }
 
   ngOnInit() {
+    for (let i = 0; i < 100; i++) {
+      this.listOfAllData.push({
+        id: i,
+        name: `Edward King ${i}`,
+        age: 32,
+        address: `London, Park Lane no. ${i}`,
+        disabled: i % 2 === 0
+      });
+    }
   }
-  onCheckAll(value) {
-    console.log(value);
-  }
+
   drop1(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.movies, event.previousIndex, event.currentIndex);
   }
