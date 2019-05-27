@@ -38,4 +38,16 @@ export class CoreService {
     }
     this.nzI18nService.setLocale(langFile);
   }
+  changeLang(lang) {
+    let langFile;
+    switch (lang) {
+      case 'zh':
+        langFile = zh_CN;
+        break;
+      case 'en':
+        langFile = en_US;
+        break;
+    }
+    this.nzI18nService.setLocale(langFile);
+  }
 }
