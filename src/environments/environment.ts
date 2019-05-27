@@ -7,7 +7,8 @@ export const environment = {
   tempPath: 'http',
   apiPath: 'http://192.168.0.0',
   apiPathChangeable: true,
-  deployPath: '.'
+  deployPath: '.',
+  lang: 'zh'
 };
 
 /*

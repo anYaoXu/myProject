@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgZorroAntdModule, NZ_I18N, en_US, zh_CN } from 'ng-zorro-antd';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import zh from '@angular/common/locales/zh';
 import { CoreModule } from './core/core.module';
+import { CoreService } from './core/core.service';
+
 
 registerLocaleData(zh);
 
@@ -28,7 +30,7 @@ registerLocaleData(zh);
     BrowserAnimationsModule,
     CoreModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: zh_CN }],
+  providers: [CoreService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

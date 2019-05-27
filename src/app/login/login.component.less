@@ -50,24 +50,47 @@ nz-content {
           width: 100%;
           height: calc(100% - 50px);
           padding: 20px 40px;
-          .item {
-            display: inline-block;
+          // .item {
+          //   display: inline-block;
+          //   width: 100%;
+          //   height: 40px;
+          // }
+          .login-input-container {
             width: 100%;
             height: 40px;
+            position: relative;
+            margin-bottom: 15px;
+            input {
+              padding: 0 25px;
+              border: none;
+              border-bottom: 1px solid #e8e8e8;
+              outline: none !important;
+              border-radius: 0;
+              padding-top: 10px;
+              .common-height;
+            }
+            &:hover {
+              .vh {
+                visibility: visible;
+              }
+            }
+            .vh {
+              visibility: hidden;
+            }
+            .login-prefix {
+              left: 3px;
+              .login-icon;
+            }
+            .clear-prefix {
+              right: 3px;
+              .login-icon;
+            }
+            .clear-prefix-second {
+              right: 28px;
+              .login-icon;
+            }
           }
-          input {
-            padding: 0 25px;
-            border: none;
-            border-bottom: 1px solid #e8e8e8;
-            outline: none !important;
-            border-radius: 0;
-            padding-top: 15px;
-            .common-height;
-          }
-          .login-prefix {
-            left: 3px;
-            .login-icon;
-          }
+
           ::ng-deep .ant-input:focus {
             box-shadow: none;
           }
@@ -89,7 +112,7 @@ nz-content {
 .login-icon {
   display: inline-block;
   position: absolute;
-  top: 25%;
+  top: 50%;
 }
 .common-height {
   height: 44px;

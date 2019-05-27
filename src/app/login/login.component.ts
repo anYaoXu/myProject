@@ -13,6 +13,7 @@ import { HttpRes } from '../shared/shared.model';
 export class LoginComponent implements OnInit {
   loginType = 'acount';
   loginForm: FormGroup;
+  showPassord = false;
   constructor(private fb: FormBuilder,
     private message: NzMessageService,
     private modalService: NzModalService,
@@ -21,15 +22,29 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.fb.group(
       {
         userName: ['', []], // Validators.required
-        password: ['', []]  // Validators.required
+        password: ['', []],
+        countrycode: ['+86 中国大陆']  // Validators.required
       });
   }
-  submitForm(): void {
+  login(): void {
     if (this.loginType === 'acount') {
       if (!(this.$('userName') && this.$('password'))) {
-        this.message.error('账号密码不能为空');
+        this.message.error('账号/密码不能为空');
+        return;
       }
     }
+    this.utilService.post('login', {
+      loginname: this.$('userName'),
+      password: this.$('password'),
+      logintype: this.loginType === 'acount' ? 1 : 2,
+      countrycode: this.$('countrycode')
+    }).subscribe((res: HttpRes) => {
+      if (res.code === 200) {
+        console.log('登录成功');
+      } else {
+        this.message.error(res.msg);
+      }
+    });
   }
   switchLoginType(type) {
     this.loginType = type;
@@ -39,6 +54,17 @@ export class LoginComponent implements OnInit {
   }
   $(name) {
     return this.$control(name).value;
+  }
+  clearValue(name, template, template2?) {
+    if (name) {
+      this.$control(name).setValue('');
+    }
+    if (template) {
+      template.focus();
+    }
+    if (template2) {
+      template2.focus();
+    }
   }
   forget() {
     // 打开忘记密码弹窗

@@ -232,4 +232,10 @@ export class MainComponent implements OnInit {
     console.log(return_list);
     return return_list;
   }
+  onFunCallback(event) {
+    console.log(event);
+    if (event === 'totalScroll') {
+
+    }
+  }
 }

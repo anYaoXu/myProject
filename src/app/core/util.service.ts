@@ -64,9 +64,9 @@ export class UtilService {
     static maxLength(maxLength: number) {
         return function (control: FormControl) {
             const value = control.value;
-            if (value && value.trim) {
+            if (value && value.trim()) {
                 if (value.trim().length > maxLength) {
-                    return { maxlength: true, error: true }
+                    return { maxlength: true, error: true };
                 }
             }
         };
@@ -77,12 +77,12 @@ export class UtilService {
     static minLength(minLength: number) {
         return function (control: FormControl) {
             const value = control.value;
-            if (value && value.trim) {
+            if (value && value.trim()) {
                 if (value.trim().length < minLength) {
-                    return { maxlength: true, error: true }
+                    return { minlength: true, error: true };
                 }
             }
-        }
+        };
     }
     /*
     * 获取请求的url

@@ -12,7 +12,7 @@ export class ForgetPasswordComponent implements OnInit {
   @Input() data;
   constructor(private fb: FormBuilder) { }
   form;
-  disabledInput = true;
+  disabledInput = false;
   countryCodeList = [
     { code: 1, name: '+86 中国大陆' },
     { code: 2, name: '+00 国外' }
@@ -31,7 +31,6 @@ export class ForgetPasswordComponent implements OnInit {
       newpwd: [null, [...validataList, this.confirmationValidator('repwd')]],
       repwd: [{ value: null, disabled: this.disabledInput }, [...validataList, this.confirmationValidator('newpwd')]]
     });
-    console.log('ssssss', this.data);
   }
   $control(name) {
     return this.form.controls[name];
@@ -52,6 +51,8 @@ export class ForgetPasswordComponent implements OnInit {
       }
     };
   }
-
+  getControl(value) {
+    console.log(this.form);
+  }
 
 }

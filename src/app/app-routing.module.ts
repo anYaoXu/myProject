@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: '', // 当匹配目录为空
     pathMatch: 'full',  // 匹配模式：路径完全一样 默认为'prefix': 以指定的路径开头
-    redirectTo: '/main'  // 重定向到login 路由
+    redirectTo: '/login'  // 重定向到login 路由
   },
   {
     path: 'login',
@@ -26,7 +26,7 @@ const routes: Routes = [
   {
     path: '**',  // 路径通配符 当所有请求的url 不在前面的定义中，路由会选择此路由 相当于 404  not found 的页面
     pathMatch: 'full',
-    redirectTo: '/main'
+    redirectTo: '/login'
   }
 ];
 

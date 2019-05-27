@@ -1,3 +1,4 @@
+import { TranslateModule } from '@ngx-translate/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login.component';
@@ -5,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+
 const loginRoutes: Routes = [
   {
     path: '',
@@ -20,7 +22,9 @@ const loginRoutes: Routes = [
     ReactiveFormsModule,
     FormsModule,
     NgZorroAntdModule,
-    RouterModule.forChild(loginRoutes)
+    TranslateModule,
+    RouterModule.forChild(loginRoutes),
+
   ],
   entryComponents: [ForgetPasswordComponent]
 

@@ -15,6 +15,7 @@ export interface HttpRes {
 const projectPreFix = 'XX';
 export const userInfoKey = projectPreFix + '_userInfoKey_';
 export const apiPathKey = projectPreFix + '_apiPathKey_';
+export const langInfoKey = projectPreFix + '_langInfoKey_';
 /*
 全局正则表达式
 */
