@@ -35,7 +35,8 @@ export class HttpInterceptorService implements HttpInterceptor {
       }
     }, (err: HttpErrorResponse) => {
       if (err.status === 403) {
-        this.router.navigate(['/login']);
+        console.log('错误返回');
+        // this.router.navigate(['/login']);
       }
     }));
   }
