@@ -7,7 +7,7 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { SharedModule } from '../shared/shared.module';
 import { MainHeaderComponent } from './main-header/main-header.component';
-import { HomeModule } from './home/home.module';
+// import { HomeModule } from './home/home.module';
 // import { HomeComponent } from './home/home.component';
 
 const MainRoutes: Routes = [
@@ -16,7 +16,7 @@ const MainRoutes: Routes = [
     component: MainComponent,
     children: [
       {
-        path: 'home',
+        path: '',
         loadChildren: './home/home.module#HomeModule'
         // component: HomeComponent
       },
@@ -34,7 +34,6 @@ const MainRoutes: Routes = [
     DragDropModule,
     SharedModule,
     CoreModule,
-    HomeModule,
     RouterModule.forChild(MainRoutes)
   ]
 })
