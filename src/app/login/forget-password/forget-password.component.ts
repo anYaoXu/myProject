@@ -51,8 +51,11 @@ export class ForgetPasswordComponent implements OnInit {
       }
     };
   }
-  getControl(value) {
-    console.log(this.form);
+  updateConfirmValidator() {
+    if (this.$control('newpwd')) {
+      this.$control('newpwd').updateValueAndValidity();
+      this.$control('repwd').updateValueAndValidity();
+    }
   }
 
 }

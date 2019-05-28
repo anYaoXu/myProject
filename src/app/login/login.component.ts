@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
       logintype: this.loginType === 'acount' ? 1 : 2,
       countrycode: this.$('countrycode')
     }).subscribe((res: HttpRes) => {
+      this.utilService.globalService.emit('发送登录成功');
       if (res.code === 200) {
         console.log('登录成功');
       } else {

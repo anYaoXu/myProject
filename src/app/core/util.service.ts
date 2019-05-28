@@ -1,5 +1,5 @@
 import { FormControl } from '@angular/forms';
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, Inject, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { urls } from './urls.model';
 import { environment } from 'src/environments/environment';
@@ -10,6 +10,7 @@ import { apiPathKey } from '../shared/shared.model';
 
 export class UtilService {
     private static urls = urls;
+    globalService = new EventEmitter();
     constructor(
         private http: HttpClient
     ) { }
@@ -92,7 +93,7 @@ export class UtilService {
     */
     static getUrl(urlKey, paramsId?) {
         const _url = UtilService.urls[urlKey];
-        if (_url && _url.url && _url.url.startWith(environment.tempPath)) {
+        if (_url && _url.url && _url.url.startsWith(environment.tempPath)) {
             // _url 为 object  并且url 直接是以 http 开头
             return _url.urls;
         } else if (_url && typeof _url === 'string' && _url.startsWith(environment.tempPath)) {
@@ -147,5 +148,6 @@ export class UtilService {
      */
     post(url, params: any = {}) {
         return this.http.post(UtilService.getUrl(url, params.id), UtilService.getCommonParams(params, 'post'));
+        // return this.http.get(UtilService.getUrl(url, params.id));
     }
 }

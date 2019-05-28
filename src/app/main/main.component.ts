@@ -1,3 +1,4 @@
+import { UtilService } from './../core/util.service';
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
@@ -186,7 +187,9 @@ export class MainComponent implements OnInit {
     [11, 12, 13, 14, 15],
   ];
   listOfAllData = [];
-  constructor() { }
+  constructor(
+    private utilService: UtilService
+  ) { }
 
   ngOnInit() {
     for (let i = 0; i < 100; i++) {
@@ -198,6 +201,9 @@ export class MainComponent implements OnInit {
         disabled: i % 2 === 0
       });
     }
+    this.utilService.globalService.subscribe((data) => {
+      console.log(data);
+    });
   }
 
   drop1(event: CdkDragDrop<string[]>) {

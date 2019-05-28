@@ -1,10 +1,128 @@
 {
-    "code": 200,
-    "msg": "",
     "data": {
         "user": {
-            "name": "xuyanru",
-            "menulist": []
+            "appprivilege": 1,
+            "corpinfoid": "113e86b0-3fd6-4d2b-a5bb-testtesttest",
+            "countrycode": "+86",
+            "firstlogin": 1,
+            "id": "113e86b0-3fd6-4d2b-a5bb-testtesttest",
+            "isjob": 1,
+            "lastlogintime": 1559012289525,
+            "loginname": "test-admin",
+            "menulist": {
+                "financial": [
+                    "financial-online",
+                    "financial1",
+                    "financial2",
+                    "financial3",
+                    "financial4",
+                    "financial5",
+                    "financial-offline",
+                    "financial6",
+                    "financial7",
+                    "financial8",
+                    "financial9",
+                    "financial10"
+                ],
+                "home": [
+                    "home-page",
+                    "home-my-bill",
+                    "home-enterprise"
+                ],
+                "budget": [
+                    "budgeting",
+                    "budget-append",
+                    "budget-additional-append",
+                    "budget-overspending",
+                    "budget-report"
+                ],
+                "personal-center": [
+                    "personal-center-main",
+                    "personal-center-basic-info",
+                    "personal-center-security",
+                    "personal-center-message-main",
+                    "personal-center-personal-message",
+                    "personal-center-reminding",
+                    "personal-center-system-notice"
+                ],
+                "invoice": [
+                    "invoice-income",
+                    "invoice-special",
+                    "invoice-ordinary",
+                    "invoice-bill"
+                ],
+                "report": [
+                    "report-person",
+                    "report-my-bill",
+                    "report-my-loan",
+                    "report-my-loan-analysis",
+                    "business-report",
+                    "report-business-bill",
+                    "report-business-analysis"
+                ],
+                "business": [
+                    "guide",
+                    "authorization",
+                    "authorization-function",
+                    "authorization-history",
+                    "authorization-lock",
+                    "basic",
+                    "basic-org",
+                    "basic-user",
+                    "basic-payment",
+                    "basic-cost",
+                    "basic-travel",
+                    "basic-other",
+                    "basic-custom",
+                    "authority",
+                    "authority-fill",
+                    "authority-query",
+                    "authority-special",
+                    "process",
+                    "mall",
+                    "mall-bill",
+                    "mall-print",
+                    "parameter",
+                    "initial",
+                    "log",
+                    "authority-login",
+                    "operation",
+                    "travel-order"
+                ]
+            },
+            "mobile": "13521212123",
+            "password": "046ff624e05b77748e5e727661b7f94fe631e51d",
+            "pcprivilege": 1,
+            "positionlevel": "7789c058-094e-4938-test-201806140012",
+            "queryinvoice": 1,
+            "queryreport": 1,
+            "remark": "SS642159",
+            "stat_user": false,
+            "status": 1,
+            "subordinatelist": [
+                {
+                    "deptid": "03e776991c8c4521913617acadfcd724",
+                    "deptname": "财务部",
+                    "deptstatus": 1,
+                    "fillbillpri": 1,
+                    "id": "c5e77277-5bdd-4657-9aef-bde85067a989",
+                    "isdefault": 0,
+                    "orgcode": "0089",
+                    "orgid": "2c79c357ca74467696bfe9bccf6c4369",
+                    "orgname": "北京信息安全科技有限公司",
+                    "postlist": [
+                        "1"
+                    ],
+                    "travelpri": 1,
+                    "type": 1
+                }
+            ],
+            "token": "6dfb8e764a85bf08cdc887414e4b257b",
+            "username": "test-admin",
+            "userpinyin": "test-admin"
         }
-    }
+    },
+    "msg": "Ok",
+    "code": 200,
+    "ok": true
 }
