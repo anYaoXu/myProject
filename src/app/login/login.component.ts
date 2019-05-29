@@ -4,6 +4,7 @@ import { NzMessageService, NzModalService } from 'ng-zorro-antd';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { UtilService } from '../core/util.service';
 import { HttpRes } from '../shared/shared.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private message: NzMessageService,
     private modalService: NzModalService,
-    private utilService: UtilService) { }
+    private utilService: UtilService,
+    private router: Router) { }
   ngOnInit() {
     this.loginForm = this.fb.group(
       {
@@ -42,6 +44,13 @@ export class LoginComponent implements OnInit {
       this.utilService.globalService.emit('发送登录成功');
       if (res.code === 200) {
         console.log('登录成功');
+        this.utilService.saveLoginInfo(res.data, () => {
+          let menus = {};
+          if (res.data.user && res.data.user.menulist) {
+            menus = res.data.user.menulist;
+          }
+          this.router.navigate(['/main']);
+        });
       } else {
         this.message.error(res.msg);
       }

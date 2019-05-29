@@ -8,6 +8,8 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ActivateGuardService } from '../shared/guard/activate-guard.service';
+import { CanDeactivateGuardService } from '../shared/guard/can-deactivate-guard.service';
 
 const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http, environment.deployPath + '/assets/i18n/', '.json');
 
@@ -26,7 +28,9 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
         { provide: NZ_I18N, useValue: zh_CN },
         { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
         UtilService,
-        MainService
+        MainService,
+        ActivateGuardService,
+        CanDeactivateGuardService
     ]
 })
 export class CoreModule { }

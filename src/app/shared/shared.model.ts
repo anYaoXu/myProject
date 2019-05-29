@@ -16,6 +16,11 @@ const projectPreFix = 'XX';
 export const userInfoKey = projectPreFix + '_userInfoKey_';
 export const apiPathKey = projectPreFix + '_apiPathKey_';
 export const langInfoKey = projectPreFix + '_langInfoKey_';
+export const navListKey = projectPreFix + '_navListKey_';
+
+export const homeMenuListKey = projectPreFix + '_homeMenuListKey_';
+export const customMenuListKey = projectPreFix + '_customMenuListKey_';
+
 /*
 全局正则表达式
 */

@@ -31,4 +31,37 @@ export interface Menu {
     code: string;
     route?: string;
     additionalRouters?: any[];
+    iconCls?: any;
+    isActive?: boolean;
+    isExpand?: boolean;
+    children?: Menu[];
+    params?: string;
+    hideBreadcrumb?: boolean;
+    hidden?: boolean;
+    isHome?: boolean;
+    isAbsolute?: boolean;
+    isFirstMenu?: boolean;
 }
+export const homeMenuList: Menu[] = [
+    {
+        label: '首页',
+        code: 'home-page',
+        route: `/main`,
+        hidden: true,
+        hideBreadcrumb: true,
+        isHome: true,
+        iconCls: { 'icon-uk-budgetamendment': true },
+    },
+    {
+        label: '我的单据',
+        code: 'home-my-bill',
+        route: `/main/home/myBill`,
+        iconCls: { 'icon-uk-My-documents': true },
+    },
+    {
+        label: '我的企业',
+        code: 'home-enterprise',
+        route: `/main/home/myEnterprise`,
+        iconCls: { 'icon-uk-My-business': true },
+    }
+]

@@ -1,6 +1,8 @@
+import { homeMenuList } from './../main/main.mode';
 import { Injectable } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { REGEXP } from '../shared/shared.model';
+import { REGEXP, navListKey, homeMenuListKey, customMenuListKey } from '../shared/shared.model';
+import { navList } from '../main/main.mode';
 
 
 @Injectable()
@@ -28,6 +30,23 @@ export class LoginService {
                         return { error: true, mistake: true };
                     }
                 }
+            }
+        }
+    }
+    handleMenuList(menus) {
+        const saveStorage = (localKey, menuList, list) => {
+            localStorage.setItem(localKey,
+                JSON.stringify(menuList.filter(item => list.some(k => k.code === item.code))))
+        };
+        let navs = navList.filter(item => Object.keys(menus).some(k => k === item.code));
+        localStorage.setItem(navListKey, JSON.stringify(navs));
+        // tslint:disable-next-line:forin
+        for (const key in menus) {
+            const list = menus[key];
+            if (key === 'home') {
+                saveStorage(homeMenuListKey, homeMenuList, list);
+            } else if (key === 'custom') {
+                // saveStorage(customMenuListKey, customMenuList, list);
             }
         }
     }

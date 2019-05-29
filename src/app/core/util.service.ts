@@ -3,7 +3,8 @@ import { Injectable, Inject, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { urls } from './urls.model';
 import { environment } from 'src/environments/environment';
-import { apiPathKey } from '../shared/shared.model';
+import { apiPathKey, userInfoKey } from '../shared/shared.model';
+declare let $: any;
 
 /* 工具接口 */
 @Injectable()
@@ -143,11 +144,70 @@ export class UtilService {
             action: params.action || ''
         };
     }
+
+
+    static getLoginInfo() {
+        return {
+            username: $.cookie('username'),
+            userid: $.cookie('userid'),
+            loginname: $.cookie('loginname'),
+            mobile: $.cookie('mobile'),
+            token: $.cookie('token'),
+            headimg: $.cookie('headimg')
+        };
+    }
+    static delLoginInfo() {
+        $.cookie('username', '');
+        $.cookie('userid', '');
+        $.cookie('loginname', '');
+        $.cookie('mobile', '');
+        $.cookie('token', '');
+        $.cookie('headimg', '');
+    }
+    static saveUserInfo(user) {
+        if (user) {
+            UtilService.setLoginInfoCookie(user);
+            localStorage.setItem(userInfoKey, JSON.stringify(user));
+        } else {
+            localStorage.removeItem(userInfoKey);
+        }
+    }
+    static setLoginInfoCookie(user, cookieConfig?) {
+        if (cookieConfig) {
+            $.cookie('username', user.username, cookieConfig);
+            $.cookie('userid', user.userid, cookieConfig);
+            $.cookie('loginname', user.loginname, cookieConfig);
+            $.cookie('mobile', user.mobile, cookieConfig);
+            $.cookie('token', user.token, cookieConfig);
+            $.cookie('headimg', user.headimg, cookieConfig);
+        } else {
+            $.cookie('username', user.username);
+            $.cookie('userid', user.userid);
+            $.cookie('loginname', user.loginname);
+            $.cookie('mobile', user.mobile);
+            $.cookie('token', user.token);
+            $.cookie('headimg', user.headimg);
+        }
+    }
     /*
      *通用的post 请求
      */
     post(url, params: any = {}) {
         return this.http.post(UtilService.getUrl(url, params.id), UtilService.getCommonParams(params, 'post'));
-        // return this.http.get(UtilService.getUrl(url, params.id));
+    }
+    getToday(callback) {
+        // 返回当前时间戳 毫秒
+        callback(new Date().getTime());
+    }
+    saveLoginInfo(data, callback?) {
+        UtilService.delLoginInfo();
+        UtilService.saveUserInfo(data.user);
+        this.getToday(time => {
+            const cookieconfig = { expirse: new Date(time + 12 * 60 * 60 * 1000) };
+            UtilService.setLoginInfoCookie(data.user, cookieconfig);
+            if (callback) {
+                callback();
+            }
+        });
     }
 }

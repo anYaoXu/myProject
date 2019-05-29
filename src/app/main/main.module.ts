@@ -7,26 +7,28 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { SharedModule } from '../shared/shared.module';
 import { MainHeaderComponent } from './main-header/main-header.component';
-// import { HomeModule } from './home/home.module';
-// import { HomeComponent } from './home/home.component';
+import { ActivateGuardService } from '../shared/guard/activate-guard.service';
 
-const MainRoutes: Routes = [
+const mainRoutes: Routes = [
   {
     path: '',
     component: MainComponent,
+    canActivate: [ActivateGuardService],
     children: [
       {
         path: '',
         loadChildren: './home/home.module#HomeModule'
-        // component: HomeComponent
       },
+      {
+        path: 'custom',
+        loadChildren: './custom/custom.module#CustomModule'
+      }
     ]
   }
 ];
 
 @NgModule({
   declarations: [MainComponent, MainHeaderComponent,
-    // HomeComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,7 @@ const MainRoutes: Routes = [
     DragDropModule,
     SharedModule,
     CoreModule,
-    RouterModule.forChild(MainRoutes)
+    RouterModule.forChild(mainRoutes)
   ]
 })
 export class MainModule { }
