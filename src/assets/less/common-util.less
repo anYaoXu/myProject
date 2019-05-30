@@ -1,0 +1,21 @@
+/* 三角形 */
+@triangle-size: 4px;
+.triangle {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  position: absolute;
+}
+.triangle-none {
+  width: @triangle-size;
+}
+.triangle-left {
+  border-top: @triangle-size solid transparent;
+  border-bottom: @triangle-size solid transparent;
+  border-left: @triangle-size solid @gray-6;
+}
+.triangle-down {
+  border-top: @triangle-size solid @gray-6;
+  border-right: @triangle-size solid transparent;
+  border-left: @triangle-size solid transparent;
+}

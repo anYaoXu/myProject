@@ -10,6 +10,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ActivateGuardService } from '../shared/guard/activate-guard.service';
 import { CanDeactivateGuardService } from '../shared/guard/can-deactivate-guard.service';
+import { LoginService } from '../login/login.service';
 
 const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http, environment.deployPath + '/assets/i18n/', '.json');
 
@@ -29,6 +30,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
         { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
         UtilService,
         MainService,
+        LoginService,
         ActivateGuardService,
         CanDeactivateGuardService
     ]

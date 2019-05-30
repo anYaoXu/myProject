@@ -1,3 +1,4 @@
+import { LoginService } from './login.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService, NzModalService } from 'ng-zorro-antd';
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
     private message: NzMessageService,
     private modalService: NzModalService,
     private utilService: UtilService,
+    private loginService: LoginService,
     private router: Router) { }
   ngOnInit() {
     this.loginForm = this.fb.group(
@@ -49,6 +51,7 @@ export class LoginComponent implements OnInit {
           if (res.data.user && res.data.user.menulist) {
             menus = res.data.user.menulist;
           }
+          this.loginService.handleMenuList(menus);
           this.router.navigate(['/main']);
         });
       } else {

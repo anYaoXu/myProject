@@ -36,9 +36,9 @@ export class LoginService {
     handleMenuList(menus) {
         const saveStorage = (localKey, menuList, list) => {
             localStorage.setItem(localKey,
-                JSON.stringify(menuList.filter(item => list.some(k => k.code === item.code))))
+                JSON.stringify(menuList.filter(item => list.some(k => k === item.code))));
         };
-        let navs = navList.filter(item => Object.keys(menus).some(k => k === item.code));
+        const navs = navList.filter(item => Object.keys(menus).some(k => k === item.code));
         localStorage.setItem(navListKey, JSON.stringify(navs));
         // tslint:disable-next-line:forin
         for (const key in menus) {

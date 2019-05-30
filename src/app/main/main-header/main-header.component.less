@@ -1,0 +1,28 @@
+@import "../../../assets/less/vars";
+.mian-header {
+  width: 100%;
+  height: 60px;
+  padding: 0 !important;
+  .mian-header-box {
+    padding: 0 20px;
+    height: 60px;
+    line-height: 60px;
+    background: linear-gradient(to bottom, #e6e6e6, #cecece);
+    .user {
+      position: relative;
+      .dian {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: @red-1;
+        border-radius: 100%;
+        display: inline-block;
+        width: 4px;
+        height: 4px;
+      }
+    }
+    .text-normal::before {
+      color: @gray-12;
+    }
+  }
+}

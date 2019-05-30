@@ -190,10 +190,31 @@ export class UtilService {
         }
     }
     /*
+     * 判断是否为空对象 即 {}
+     */
+    static isEmptyObject(object) {
+        return JSON.stringify(object) === '{}';
+    }
+    /*
      *通用的post 请求
      */
     post(url, params: any = {}) {
         return this.http.post(UtilService.getUrl(url, params.id), UtilService.getCommonParams(params, 'post'));
+    }
+    /*
+     * 通用的get请求
+     *  */
+    get(url, params: any = {}, commonParams = {}) {
+        const common = UtilService.isEmptyObject(commonParams) ? {} : {
+            ...{
+                pageNumber: 1,
+                pagesize: 10,
+                sortfield: '',
+                sortorder: '',
+            }, ...commonParams
+        };
+        return this.http.post(
+            UtilService.getUrl(url, params.id), UtilService.getCommonParams({ ...params, ...common }))
     }
     getToday(callback) {
         // 返回当前时间戳 毫秒

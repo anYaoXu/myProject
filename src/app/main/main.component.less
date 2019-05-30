@@ -1,0 +1,74 @@
+@import "../../assets/less/vars";
+.mian-wrap {
+  width: 100%;
+  height: 100%;
+  .nav-box {
+    width: 100%;
+    height: 36px;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    padding: 0;
+    background-color: @gray-1;
+    .nav-left {
+      flex: 0 0 180px; // 不放大 不缩小 宽度为180px
+      height: 100%;
+    }
+    .nav-right {
+      flex: 1; /*这里设置为占比1，填充满剩余空间*/
+      height: 100%;
+      padding: 0 30px;
+      ul {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        display: -webkit-flex;
+        li {
+          min-width: 30px;
+          margin: 0 30px;
+          background-color: green;
+          display: flex;
+          align-items: center; /*垂直居中*/
+        }
+      }
+    }
+  }
+  .conent-box {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    .sider-content {
+      flex: 0 0 180px;
+      .menu-list {
+        width: 100%;
+        height: 100%;
+        background-color: @gray-7;
+        .triangle {
+          margin-top: 12px;
+          margin-left: -5px;
+        }
+        .menu-i {
+          margin-right: 12px;
+          vertical-align: sub;
+          margin-left: 15px;
+          color: #000;
+        }
+        .main-icon-dot {
+          display: inline-block;
+          width: 4px;
+          height: 4px;
+          border-radius: 100%;
+          margin-right: 6px;
+          margin-left: 24px;
+          background-color: #000;
+        }
+      }
+    }
+    .main-content {
+      flex: 1;
+      min-width: 500px;
+      padding: 0 30px;
+      background-color: green;
+    }
+  }
+}

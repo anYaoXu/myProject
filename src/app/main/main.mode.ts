@@ -51,6 +51,13 @@ export const homeMenuList: Menu[] = [
         hideBreadcrumb: true,
         isHome: true,
         iconCls: { 'icon-uk-budgetamendment': true },
+        children: [
+            {
+                label: '首页1',
+                code: 'code1',
+                route: '/mian/xxxx'
+            }
+        ]
     },
     {
         label: '我的单据',
