@@ -13,71 +13,32 @@
     </div>
   </nz-header>
   <nz-layout class="conent-box">
-    <nz-sider
-      class="sider-content"
-      nzCollapsible
-      [(nzCollapsed)]="isCollapsed"
-      [nzReverseArrow]="isReverseArrow"
-    >
-      <ul
-        nz-menu
-        [nzMode]="'inline'"
-        [nzInlineCollapsed]="isCollapsed"
-        class="menu-list"
-      >
+    <nz-sider class="sider-content" nzCollapsible [(nzCollapsed)]="isCollapsed" [nzReverseArrow]="isReverseArrow">
+      <ul nz-menu [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed" class="menu-list">
         <ng-container *ngFor="let item of menuList">
           <li nz-submenu *ngIf="item.children" class="first-menu">
             <span title>
-              <i
-                class="triangle"
-                [class.triangle-down]="item.isExpand"
-                [class.triangle-left]="!item.isExpand"
-              ></i>
-              <i
-                class="menu-i f-s-20"
-                [ngClass]="item.iconCls"
-                [title]="item.label"
-              ></i>
+              <i class="triangle" [class.triangle-down]="item.isExpand" [class.triangle-left]="!item.isExpand"></i>
+              <i class="menu-i f-s-20" [ngClass]="item.iconCls" [title]="item.label"></i>
               <span class="nav-text">{{ item.label }}</span>
             </span>
             <ul>
               <ng-container *ngFor="let _item of item.children">
-                <li
-                  nz-menu-item
-                  class="secont-menu"
-                  *ngIf="!_item.children"
-                  [nzSelected]="_item.isActive"
-                >
+                <li nz-menu-item class="secont-menu" *ngIf="!_item.children" [nzSelected]="_item.isActive">
                   <span>
                     <i class="main-icon-dot"></i>
                     <span class="nav-text">{{ _item.label }}</span>
-                    <i
-                      class="anticon anticon-right main-icon-right"
-                      *ngIf="_item.isActive"
-                    ></i>
+                    <i class="anticon anticon-right main-icon-right" *ngIf="_item.isActive"></i>
                   </span>
                 </li>
               </ng-container>
             </ul>
           </li>
-          <li
-            nz-menu-item
-            *ngIf="!item.children"
-            class="menu-first"
-            [nzSelected]="item.isActive"
-            [hidden]="item.hidden"
-          >
+          <li nz-menu-item *ngIf="!item.children" class="menu-first" [nzSelected]="item.isActive" [hidden]="item.hidden">
             <span>
-              <i
-                class="menu-i f-s-20"
-                [ngClass]="item.iconCls"
-                [title]="item.label"
-              ></i>
+              <i class="menu-i f-s-20" [ngClass]="item.iconCls" [title]="item.label"></i>
               <span class="nav-text">{{ item.label }}</span>
-              <i
-                class="anticon anticon-right anticion-icon-right"
-                *ngIf="item.isActive"
-              ></i>
+              <i class="anticon anticon-right anticion-icon-right" *ngIf="item.isActive"></i>
             </span>
           </li>
         </ng-container>
@@ -100,6 +61,8 @@
         </li> -->
       </ul>
     </nz-sider>
-    <nz-content class="main-content"> </nz-content>
+    <nz-content class="main-content">
+      <router-outlet></router-outlet>
+    </nz-content>
   </nz-layout>
 </nz-layout>

@@ -1,3 +1,60 @@
-<p>
-  home-page works!
-</p>
+<!-- <nz-list [nzDataSource]="data" nzSize="small" [nzHeader]="header" [nzFooter]="'Footer'" [nzRenderItem]="item">
+  <ng-template #header>
+    <span *ngFor="let header of costItem.header" >
+{{header.title}}
+    </span>
+  </ng-template>
+  <ng-template #item let-item>
+    <nz-list-item [nzContent]="items">
+      <ng-template #items>
+        <span style="color:red;">{{item.name}}</span>
+        <span style="color:green;">{{item.age}}</span>
+      </ng-template>
+    </nz-list-item>
+  </ng-template>
+</nz-list> -->
+<div class="mytable">
+  <nz-table #basicTable [nzData]="costItemData" [nzShowPagination]="false">
+    <thead>
+      <tr>
+        <th></th>
+        <th>费用项目</th>
+        <th>报销金额</th>
+        <th>原币金额</th>
+        <th>费用流水</th>
+        <th>费用分摊</th>
+        <th>附件</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.a }}</td>
+        <td>
+          {{ data.costItemName }}
+          <nz-divider nzType="vertical"></nz-divider>
+          {{data.costTypeName}}
+          <ng-container *ngIf="data.tag">
+            <br> {{data.tag}}
+          </ng-container>
+        </td>
+        <td>{{ data.bxje }}</td>
+        <td>
+          {{data.ybje}}
+        </td>
+        <td>
+          <a>查看</a>
+        </td>
+        <td>
+          <a>查看</a>
+        </td>
+        <td>
+          附近
+        </td>
+        <td>
+          <a>详情</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>
