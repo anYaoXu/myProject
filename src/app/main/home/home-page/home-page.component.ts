@@ -16,6 +16,7 @@ export class HomePageComponent implements OnInit {
   //     age: 2
   //   },
   // ]
+  selectedValue;
   costItemData = [
     {
       a: 1,

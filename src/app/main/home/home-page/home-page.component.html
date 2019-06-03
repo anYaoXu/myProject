@@ -33,14 +33,15 @@
         <td>
           {{ data.costItemName }}
           <nz-divider nzType="vertical"></nz-divider>
-          {{data.costTypeName}}
+          {{ data.costTypeName }}
           <ng-container *ngIf="data.tag">
-            <br> {{data.tag}}
+            <br />
+            {{ data.tag }}
           </ng-container>
         </td>
         <td>{{ data.bxje }}</td>
         <td>
-          {{data.ybje}}
+          {{ data.ybje }}
         </td>
         <td>
           <a>查看</a>
@@ -58,3 +59,13 @@
     </tbody>
   </nz-table>
 </div>
+<nz-select
+  style="width: 120px;"
+  [(ngModel)]="selectedValue"
+  nzAllowClear
+  nzPlaceHolder="Choose"
+>
+  <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
+  <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
+  <nz-option nzValue="disabled" nzLabel="Disabled" nzDisabled></nz-option>
+</nz-select>

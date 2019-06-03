@@ -1,7 +1,9 @@
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ScrollbarDirective } from './directives/scrollbar.directive';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TablesComponent } from './tables/tables.component';
 
 @NgModule({
@@ -11,11 +13,17 @@ import { TablesComponent } from './tables/tables.component';
     ],
     imports: [
         NgZorroAntdModule,
-        CommonModule
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     exports: [
+        NgZorroAntdModule,
+        CommonModule,
         ScrollbarDirective,
-        TablesComponent
+        TablesComponent,
+        FormsModule,
+        ReactiveFormsModule
     ]
 })
 
