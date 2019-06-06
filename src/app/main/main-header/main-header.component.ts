@@ -1,6 +1,7 @@
 import { UtilService } from 'src/app/core/util.service';
 import { MainService } from './../main.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,7 +14,8 @@ export class MainHeaderComponent implements OnInit {
   utilTitle = '';
   constructor(
     private mainService: MainService,
-    private utilService: UtilService) { }
+    private utilService: UtilService,
+    private router: Router) { }
 
   ngOnInit() {
     this.mainService.gg.subscribe((data) => {
@@ -23,5 +25,7 @@ export class MainHeaderComponent implements OnInit {
       this.utilTitle = data;
     });
   }
-
+  loginOut() {
+    this.router.navigate(['/login']);
+  }
 }

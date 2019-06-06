@@ -29,6 +29,11 @@
                     "home-my-bill",
                     "home-enterprise"
                 ],
+                "custom": [
+                    "home-page",
+                    "home-my-bill",
+                    "home-enterprise"
+                ],
                 "budget": [
                     "budgeting",
                     "budget-append",

@@ -55,7 +55,7 @@ export const homeMenuList: Menu[] = [
             {
                 label: '首页1',
                 code: 'code1',
-                route: '/mian/xxxx'
+                route: '/main/home/page'
             }
         ]
     },

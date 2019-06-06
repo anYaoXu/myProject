@@ -25,9 +25,14 @@
         display: -webkit-flex;
         li {
           min-width: 30px;
-          margin: 0 30px;
+          margin: 0 10px;
+          padding: 0 20px;
           display: flex;
           align-items: center; /*垂直居中*/
+          &.active {
+            color: @main-1;
+            border-bottom: 1px solid @main-1;
+          }
         }
       }
     }

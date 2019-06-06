@@ -1,8 +1,9 @@
+import { CoreModule } from './../core/core.module';
 import { MainService } from './main.service';
 import { UtilService } from './../core/util.service';
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { navListKey, homeMenuListKey } from '../shared/shared.model';
+import { navListKey, homeMenuListKey, customMenuListKey } from '../shared/shared.model';
 import { Router } from '@angular/router';
 import { homeMenuList } from './main.mode';
 declare let $: any;
@@ -13,7 +14,7 @@ declare let $: any;
   styleUrls: ['./main.component.less']
 })
 export class MainComponent implements OnInit {
-  nvaList = []; // 第一级菜单
+  navList = []; // 第一级菜单
   menuList = []; // 二级菜单
   currentNav; // 当前导航栏
   currentItem; // 当前菜单
@@ -33,20 +34,20 @@ export class MainComponent implements OnInit {
     this.initMenuList();
   }
   initNavList() {
-    this.nvaList = $.extend(true, [], this.mainService.getMenuList(navListKey));
+    this.navList = $.extend(true, [], this.mainService.getMenuList(navListKey));
     // 激活当前导航栏
     const url = this.router.routerState.snapshot.url;
-    // if (url.endsWith('/main') || url.includes('/main/home')) {
-    //   this.currentNav = this.nvaList.find(item => item.isHome);
-    //   this.currentNav.isActive = true;
-    // } else {
-    //   this.nvaList.forEach(item => {
-    //     if (!item.isHome && url.indexOf(item.router) === 0) {
-    //       this.currentNav = item;
-    //       item.isActive = true;
-    //     }
-    //   });
-    // }
+    if (url.endsWith('/main') || url.includes('/main/home')) {
+      this.currentNav = this.navList.find(item => item.isHome);
+      this.currentNav.isActive = true;
+    } else {
+      this.navList.forEach(item => {
+        if (!item.isHome && url.indexOf(item.router) === 0) {
+          this.currentNav = item;
+          item.isActive = true;
+        }
+      });
+    }
   }
   initMenuList() {
     this.getMenuList();
@@ -54,7 +55,29 @@ export class MainComponent implements OnInit {
   getMenuList() {
     let menuList = [];
     this.breadcrumbList = [];
-    menuList = this.mainService.getMenuList(homeMenuListKey);
+    if (this.currentNav) {
+      switch (this.currentNav.code) {
+        case 'home':
+          menuList = this.mainService.getMenuList(homeMenuListKey);
+          break;
+        case 'custom':
+          menuList = this.mainService.getMenuList(customMenuListKey);
+          break;
+      }
+    }
     this.menuList = $.extend(true, [], menuList);
+  }
+  onClickNav(item) {
+
+  }
+  onClickItem(item) {
+    this.currentItem = item;
+    this.menuList.map(value => {
+      value.isActive = (item.code === value.code);
+      if (value.children) {
+        value.children.map(v => v.isActive = item.code = v.code);
+      }
+    });
+    this.router.navigate([item.route + (item.params || '')]);
   }
 }

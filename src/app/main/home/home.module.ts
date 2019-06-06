@@ -12,11 +12,15 @@ import { MyEnterpriseComponent } from './my-enterprise/my-enterprise.component';
 const HomeRoutes: Routes = [
   {
     path: '',
-    component: HomePageComponent,
+    component: HomeComponent,
     children: [
       {
-        path: '',
+        path: 'home/page',
         component: HomePageComponent
+      },
+      {
+        path: 'home/myBill',
+        component: MyBillComponent
       }
     ]
   }
