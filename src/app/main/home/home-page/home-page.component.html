@@ -13,7 +13,7 @@
     </nz-list-item>
   </ng-template>
 </nz-list> -->
-<div class="mytable">
+<!-- <div class="mytable">
   <nz-table #basicTable [nzData]="costItemData" [nzShowPagination]="false">
     <thead>
       <tr>
@@ -68,4 +68,22 @@
   <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
   <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
   <nz-option nzValue="disabled" nzLabel="Disabled" nzDisabled></nz-option>
-</nz-select>
+</nz-select> -->
+<p>
+  <button nz-button type="button" (click)="zoomOut()">放大</button>
+  <button nz-button type="button" (click)="zoomIn()">缩小</button>
+  <button nz-button type="button" (click)="leftRotate()">左旋</button>
+  <button nz-button type="button" (click)="rightRotate()">右旋</button>
+</p>
+<div
+  style="width: 500px; height: 400px; overflow:hidden; border:1px solid red; position: relative;"
+  #div
+>
+  <img
+    src="../../../../assets/images/a.jpg"
+    alt=""
+    style="width: 100%; position: absolute;left: 0; right: 0;"
+    draggable="false"
+    #img
+  />
+</div>
