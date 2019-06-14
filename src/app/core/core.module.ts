@@ -11,6 +11,7 @@ import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common
 import { ActivateGuardService } from '../shared/guard/activate-guard.service';
 import { CanDeactivateGuardService } from '../shared/guard/can-deactivate-guard.service';
 import { LoginService } from '../login/login.service';
+// import { HandelImgComponent } from '../main/home/handel-img/handel-img.component';
 
 const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http, environment.deployPath + '/assets/i18n/', '.json');
 

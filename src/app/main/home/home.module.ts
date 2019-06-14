@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
@@ -8,6 +9,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MyBillComponent } from './my-bill/my-bill.component';
 import { MyEnterpriseComponent } from './my-enterprise/my-enterprise.component';
+import { HandelImgComponent } from './handel-img/handel-img.component';
 
 const HomeRoutes: Routes = [
   {
@@ -27,13 +29,16 @@ const HomeRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [HomeComponent, HomePageComponent, MyBillComponent, MyEnterpriseComponent],
+  declarations: [HomeComponent, HomePageComponent, MyBillComponent, MyEnterpriseComponent,HandelImgComponent],
   imports: [
     CommonModule,
     NgZorroAntdModule,
     DragDropModule,
     SharedModule,
     RouterModule.forChild(HomeRoutes)
+  ],
+  entryComponents: [
+    HandelImgComponent
   ]
 })
 export class HomeModule { }

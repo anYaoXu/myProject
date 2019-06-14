@@ -1,0 +1,18 @@
+<p>
+  <button nz-button type="button" (click)="zoomOut()">放大</button>
+  <button nz-button type="button" (click)="zoomIn()">缩小</button>
+  <button nz-button type="button" (click)="leftRotate()">左旋</button>
+  <button nz-button type="button" (click)="rightRotate()">右旋</button>
+</p>
+<div
+  style="width: 500px; height: 300px; overflow:hidden; border:1px solid red; position: relative;"
+  #div
+>
+  <img
+    src="../../../../assets/images/a.jpg"
+    alt=""
+    style="width: 100%;position: absolute;left: 0; right: 0; cursor: move;"
+    draggable="false"
+    #img
+  />
+</div>
