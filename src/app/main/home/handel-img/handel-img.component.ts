@@ -9,8 +9,94 @@ export class HandelImgComponent implements OnInit {
 
   @ViewChild('img') myImg: ElementRef;
   @ViewChild('div') myDiv: ElementRef;
+  @ViewChild('ul') myUl: ElementRef;
   clickCount = 1;
   bj = 50;
+  imgList = [
+    {
+      a: '../../../../assets/images/a.jpg',
+      b: '',
+    },
+    {
+      a: '../../../../assets/images/b.jpg',
+      b: '',
+    },
+    {
+      a: '../../../../assets/images/a.jpg',
+      b: '',
+    },
+    {
+      a: '../../../../assets/images/b.jpg',
+      b: '',
+    },
+    {
+      a: '../../../../assets/images/a.jpg',
+      b: '',
+    },
+    {
+      a: '../../../../assets/images/b.jpg',
+      b: '',
+    },
+    {
+      a: '../../../../assets/images/a.jpg',
+      b: '',
+    },
+    {
+      a: '../../../../assets/images/b.jpg',
+      b: '',
+    },
+    {
+      a: '../../../../assets/images/a.jpg',
+      b: '',
+    },
+    {
+      a: '../../../../assets/images/b.jpg',
+      b: '',
+    },
+    {
+      a: '../../../../assets/images/a.jpg',
+      b: '',
+    },
+    {
+      a: '../../../../assets/images/b.jpg',
+      b: '',
+    },
+    {
+      a: '../../../../assets/images/a.jpg',
+      b: '',
+    },
+    {
+      a: '../../../../assets/images/b.jpg',
+      b: '',
+    },
+    {
+      a: '../../../../assets/images/a.jpg',
+      b: '',
+    },
+    {
+      a: '../../../../assets/images/b.jpg',
+      b: '',
+    },
+    {
+      a: '../../../../assets/images/a.jpg',
+      b: '',
+    },
+    {
+      a: '../../../../assets/images/b.jpg',
+      b: '',
+    },
+    {
+      a: '../../../../assets/images/a.jpg',
+      b: '',
+    },
+    {
+      a: '../../../../assets/images/b.jpg',
+      b: '',
+    },
+  ];
+  checkedIndex = 0;
+  currentPage = 1;
+  currentImgUrl = this.imgList[0].a;
   constructor() { }
 
   ngOnInit() {
@@ -110,5 +196,64 @@ export class HandelImgComponent implements OnInit {
       drag.onmouseup = null;
     };
   }
+  left(index?) {
+    if (this.currentPage === 1) {
+      this.myUl.nativeElement.style.left = 0 + 'px';
+    } else {
+      const currentLeft = this.myUl.nativeElement.offsetLeft;
+      this.myUl.nativeElement.style.left = (currentLeft + 770) + 'px';
+      this.currentPage--;
+    }
+    if (!index) {
+      this.checkedIndex = (this.currentPage - 1) * 13;
+      this.currentImgUrl = this.imgList[this.checkedIndex].a;
+    } else {
+      this.currentImgUrl = this.imgList[index].a;
+    }
 
+  }
+  right(index?) {
+    if (this.currentPage >= Math.ceil(this.imgList.length / 13)) {
+    } else {
+      const currentLeft = this.myUl.nativeElement.offsetLeft;
+      this.myUl.nativeElement.style.left = (currentLeft - 770) + 'px';
+      this.currentPage++;
+    }
+    if (!index) {
+      this.checkedIndex = (this.currentPage - 1) * 13;
+      this.currentImgUrl = this.imgList[this.checkedIndex].a;
+    } else {
+      this.currentImgUrl = this.imgList[index].a;
+    }
+  }
+  prev() {
+    if (this.checkedIndex > 0) {
+      this.currentImgUrl = this.imgList[this.checkedIndex].a;
+      // 点击上一个正好翻页情况
+      if (this.checkedIndex % 13 === 0) {
+        this.checkedIndex--;
+        this.left(this.checkedIndex);
+      } else {
+        this.checkedIndex--;
+      }
+      this.currentImgUrl = this.imgList[this.checkedIndex].a;
+    }
+  }
+  next() {
+    if (this.checkedIndex < this.imgList.length) {
+      if ((this.checkedIndex + 1) % 13 === 0) {
+        this.checkedIndex++;
+        this.right(this.checkedIndex);
+
+      } else {
+        this.checkedIndex++;
+
+      }
+      this.currentImgUrl = this.imgList[this.checkedIndex].a;
+    }
+  }
+  checkImg(index) {
+    this.checkedIndex = index;
+    this.currentImgUrl = this.imgList[index].a;
+  }
 }

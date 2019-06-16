@@ -1,39 +1,34 @@
 <div class="fj-box">
   <div class="slt-box">
     <div class="slt-left-box">
-      <i nz-icon nzType="left" nzTheme="outline"></i>
+      <i nz-icon nzType="left" nzTheme="outline" (click)="left()"></i>
     </div>
     <div class="slt-center-box">
-      <ul>
-        <li class="active">
-          <img src="../../../../assets/images/a.jpg" alt="">
+      <ul #ul>
+        <li *ngFor="let img of imgList; let i = index" [class.active]="i === checkedIndex" (click)="checkImg(i)">
+          <img src="{{img.a}}" alt="">
         </li>
-        <li>
-          <img src="../../../../assets/images/a.jpg" alt="">
-        </li>
-        <li>
-          <img src="../../../../assets/images/a.jpg" alt="">
-        </li>
+
       </ul>
     </div>
     <div class="slt-right-box">
-      <i nz-icon nzType="right" nzTheme="outline"></i>
+      <i nz-icon nzType="right" nzTheme="outline" (click)="right()"></i>
     </div>
   </div>
   <div class="img-box">
     <div class="img-left-box">
-      <i nz-icon nzType="left" nzTheme="outline"></i>
+      <i nz-icon nzType="left" nzTheme="outline" (click)="prev()"></i>
     </div>
     <div class="img-center-box" #div>
-      <img src="../../../../assets/images/a.jpg" alt="" style="width: 100%;position: absolute;left: 0; right: 0; cursor: move;" draggable="false" #img />
+      <img src="{{currentImgUrl}}" alt="" style="width: 100%;position: absolute;left: 0; right: 0; cursor: move;" draggable="false" #img />
     </div>
     <div class="img-right-box">
-      <i nz-icon nzType="right" nzTheme="outline"></i>
+      <i nz-icon nzType="right" nzTheme="outline" (click)="next()"></i>
 
     </div>
   </div>
   <p class="number-box">
-    33/44
+    {{checkedIndex + 1}}/{{imgList.length}}
   </p>
   <p class="btn-box">
     <button nz-button type="button" (click)="zoomOut()">
@@ -41,8 +36,8 @@
     <button nz-button type="button" (click)="zoomIn()">
       <i nz-icon nzType="zoom-out" nzTheme="outline"></i>缩小</button>
     <button nz-button type="button" (click)="leftRotate()">
-      <i nz-icon nzType="undo" nzTheme="outline"></i>左旋</button>
+      <i nz-icon nzType="undo" nzTheme="outline"></i>左旋转</button>
     <button nz-button type="button" (click)="rightRotate()">
-      <i nz-icon nzType="redo" nzTheme="outline"></i>右旋</button>
+      <i nz-icon nzType="redo" nzTheme="outline"></i>右旋转</button>
   </p>
 </div>
