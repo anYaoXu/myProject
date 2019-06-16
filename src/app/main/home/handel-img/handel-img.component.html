@@ -1,18 +1,48 @@
-<p>
-  <button nz-button type="button" (click)="zoomOut()">放大</button>
-  <button nz-button type="button" (click)="zoomIn()">缩小</button>
-  <button nz-button type="button" (click)="leftRotate()">左旋</button>
-  <button nz-button type="button" (click)="rightRotate()">右旋</button>
-</p>
-<div
-  style="width: 500px; height: 300px; overflow:hidden; border:1px solid red; position: relative;"
-  #div
->
-  <img
-    src="../../../../assets/images/a.jpg"
-    alt=""
-    style="width: 100%;position: absolute;left: 0; right: 0; cursor: move;"
-    draggable="false"
-    #img
-  />
+<div class="fj-box">
+  <div class="slt-box">
+    <div class="slt-left-box">
+      <i nz-icon nzType="left" nzTheme="outline"></i>
+    </div>
+    <div class="slt-center-box">
+      <ul>
+        <li class="active">
+          <img src="../../../../assets/images/a.jpg" alt="">
+        </li>
+        <li>
+          <img src="../../../../assets/images/a.jpg" alt="">
+        </li>
+        <li>
+          <img src="../../../../assets/images/a.jpg" alt="">
+        </li>
+      </ul>
+    </div>
+    <div class="slt-right-box">
+      <i nz-icon nzType="right" nzTheme="outline"></i>
+    </div>
+  </div>
+  <div class="img-box">
+    <div class="img-left-box">
+      <i nz-icon nzType="left" nzTheme="outline"></i>
+    </div>
+    <div class="img-center-box" #div>
+      <img src="../../../../assets/images/a.jpg" alt="" style="width: 100%;position: absolute;left: 0; right: 0; cursor: move;" draggable="false" #img />
+    </div>
+    <div class="img-right-box">
+      <i nz-icon nzType="right" nzTheme="outline"></i>
+
+    </div>
+  </div>
+  <p class="number-box">
+    33/44
+  </p>
+  <p class="btn-box">
+    <button nz-button type="button" (click)="zoomOut()">
+      <i nz-icon nzType="zoom-in" nzTheme="outline"></i>放大</button>
+    <button nz-button type="button" (click)="zoomIn()">
+      <i nz-icon nzType="zoom-out" nzTheme="outline"></i>缩小</button>
+    <button nz-button type="button" (click)="leftRotate()">
+      <i nz-icon nzType="undo" nzTheme="outline"></i>左旋</button>
+    <button nz-button type="button" (click)="rightRotate()">
+      <i nz-icon nzType="redo" nzTheme="outline"></i>右旋</button>
+  </p>
 </div>
