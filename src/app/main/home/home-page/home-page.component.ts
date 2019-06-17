@@ -54,7 +54,7 @@ export class HomePageComponent implements OnInit {
   showDialog() {
     const modal = this.modalService.create({
       nzTitle: '附件',
-      nzWidth: 870,
+      nzWidth: 880,
       nzStyle: { top: '10px' },
       nzContent: HandelImgComponent,
       nzMaskClosable: false,

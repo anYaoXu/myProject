@@ -206,8 +206,10 @@ export class HandelImgComponent implements OnInit {
     }
     if (!index) {
       this.checkedIndex = (this.currentPage - 1) * 13;
+      this.reset();
       this.currentImgUrl = this.imgList[this.checkedIndex].a;
     } else {
+      this.reset();
       this.currentImgUrl = this.imgList[index].a;
     }
 
@@ -221,8 +223,10 @@ export class HandelImgComponent implements OnInit {
     }
     if (!index) {
       this.checkedIndex = (this.currentPage - 1) * 13;
+      this.reset();
       this.currentImgUrl = this.imgList[this.checkedIndex].a;
     } else {
+      this.reset();
       this.currentImgUrl = this.imgList[index].a;
     }
   }
@@ -236,6 +240,7 @@ export class HandelImgComponent implements OnInit {
       } else {
         this.checkedIndex--;
       }
+      this.reset();
       this.currentImgUrl = this.imgList[this.checkedIndex].a;
     }
   }
@@ -244,16 +249,22 @@ export class HandelImgComponent implements OnInit {
       if ((this.checkedIndex + 1) % 13 === 0) {
         this.checkedIndex++;
         this.right(this.checkedIndex);
-
       } else {
         this.checkedIndex++;
-
       }
+      this.reset();
       this.currentImgUrl = this.imgList[this.checkedIndex].a;
     }
   }
   checkImg(index) {
     this.checkedIndex = index;
+    this.reset();
     this.currentImgUrl = this.imgList[index].a;
+  }
+  reset() {
+    this.myImg.nativeElement.style.left = 0 + 'px';
+    this.myImg.nativeElement.style.top = 0 + 'px';
+    this.myImg.nativeElement.style.width = '100%';
+    this.myImg.nativeElement.style.transform = 'rotate(' + 0 + 'deg)';
   }
 }

@@ -195,6 +195,14 @@ export class UtilService {
     static isEmptyObject(object) {
         return JSON.stringify(object) === '{}';
     }
+    static getUniqueListByField(list: any[], field: string) {
+        const uniqueList = [];
+        list.forEach(item => {
+            if (!uniqueList.some(u => u[field] === item[field])) {
+                uniqueList.push(item);
+            }
+        });
+    }
     /*
      *通用的post 请求
      */

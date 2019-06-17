@@ -1,103 +1,106 @@
-.fj-box{
+.fj-box {
+  width: 100%;
+  .slt-box {
     width: 100%;
-    .slt-box{
-        width: 100%;
-        height: 50px;  
-        margin-bottom: 20px; 
-        background-color:#FBFBFB;
-        padding: 0 20px;
-        .slt-left-box, .slt-right-box{
-            width: 30px;
-            height: 100%;
-            float: left;
-            padding-top:10px;
-            text-align: center;
-            i{
-                cursor: pointer;
-            }
-        }
-        .slt-center-box{
-            width: e("calc(100% - 60px)");
-            height: 100%;
-            float: left;
-            position: relative;
-            overflow: hidden;
-            ul{
-                width: 1000%;
-                height: 100%;
-                overflow: hidden;
-                position: absolute;
-                left:0;
-                top:0;
-                transition: 1.5s;
-                li{
-                    width: 50px;
-                    height: 50px;
-                    float: left;
-                    margin-right: 10px;
-                    padding: 2px;
-                    border: 1px solid #fff;
-                    &:last-child{
-                        margin-right: 0;
-                    }
-                    &:nth-child(13), &:nth-child(26), &:nth-child(39){
-                        margin-right: 0;
-                    }
-                    &.active{
-                        border:1px solid #5488C6;
-                    }
-                    img{
-                        width: 100%;
-                        height: 100%;
-                    }
-                }
-            }
-        }
+    height: 50px;
+    margin-bottom: 20px;
+    background-color: #fbfbfb;
+    // padding: 0 20px;
+    .slt-left-box,
+    .slt-right-box {
+      width: 30px;
+      height: 100%;
+      float: left;
+      padding-top: 10px;
+      text-align: center;
+      i {
+        cursor: pointer;
+      }
     }
-    .img-box{
-        display: flex;
-        display: -webkit-flex;
-        width: 100%;
-        height: 400px;
-        
+    .slt-center-box {
+      width: e("calc(100% - 60px)");
+      height: 100%;
+      float: left;
+      position: relative;
+      overflow: hidden;
+      ul {
+        width: 1000%;
+        height: 100%;
+        overflow: hidden;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transition: 1.5s;
+        li {
+          width: 50px;
+          height: 50px;
+          float: left;
+          margin-right: 10px;
+          padding: 2px;
+          border: 1px solid #fff;
+          &:last-child {
+            margin-right: 0;
+          }
+          &:nth-child(13),
+          &:nth-child(26),
+          &:nth-child(39) {
+            margin-right: 0;
+          }
+          &.active {
+            border: 1px solid #5488c6;
+          }
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+  .img-box {
+    display: flex;
+    display: -webkit-flex;
+    width: 100%;
+    height: 400px;
+
     flex-direction: row;
-    padding: 0 20px;
-        .img-left-box, .img-right-box{
-            flex: 0 0 70px;
-            width: 70px;
-            height: 100%;
-            display: flex;
-            display: -webkit-flex;
-            align-items:center;
-            justify-content: flex-start;
-            i{
-                font-size: 30px;
-                cursor: pointer;
-            }
-        }
-        .img-right-box{
-            justify-content: flex-end;
-        }
-        .img-center-box{      
-            flex: 1;      
-            // float: left;
-            // width: e("calc(100% - 70px - 70px)"); 
-            height: 388px; 
-            overflow:hidden; 
-            border:1px solid red; 
-            position: relative;
-        }
+    // padding: 0 20px;
+    .img-left-box,
+    .img-right-box {
+      flex: 0 0 70px;
+      width: 70px;
+      height: 100%;
+      display: flex;
+      display: -webkit-flex;
+      align-items: center;
+      justify-content: flex-start;
+      i {
+        font-size: 30px;
+        cursor: pointer;
+      }
     }
-    .number-box{
-        text-align: center;
-        font-size: 12px;
-        margin-bottom: 15px;
+    .img-right-box {
+      justify-content: flex-end;
     }
-    .btn-box{
-        text-align: center;
-        button{
-            margin: 0 15px;
-        }
+    .img-center-box {
+      flex: 1;
+      // float: left;
+      // width: e("calc(100% - 70px - 70px)");
+      height: 388px;
+      overflow: hidden;
+      border: 1px solid red;
+      position: relative;
     }
-    
+  }
+  .number-box {
+    text-align: center;
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+  .btn-box {
+    text-align: center;
+    button {
+      margin: 0 15px;
+    }
+  }
 }
