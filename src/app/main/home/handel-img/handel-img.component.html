@@ -5,10 +5,13 @@
     </div>
     <div class="slt-center-box">
       <ul #ul>
-        <li *ngFor="let img of imgList; let i = index" [class.active]="i === checkedIndex" (click)="checkImg(i)">
-          <img src="{{img.a}}" alt="">
+        <li
+          *ngFor="let img of imgList; let i = index"
+          [class.active]="i === checkedIndex"
+          (click)="checkImg(i)"
+        >
+          <img src="{{ img.a }}" alt="" />
         </li>
-
       </ul>
     </div>
     <div class="slt-right-box">
@@ -20,24 +23,34 @@
       <i nz-icon nzType="left" nzTheme="outline" (click)="prev()"></i>
     </div>
     <div class="img-center-box" #div>
-      <img src="{{currentImgUrl}}" alt="" style="width: 100%;position: absolute;left: 0; right: 0; cursor: move;" draggable="false" #img />
+      <img
+        src="{{ currentImgUrl }}"
+        alt=""
+        style="width: 100%;position: absolute;left: 0; right: 0; cursor: move;"
+        draggable="false"
+        #img
+      />
     </div>
     <div class="img-right-box">
       <i nz-icon nzType="right" nzTheme="outline" (click)="next()"></i>
-
     </div>
   </div>
-  <p class="number-box">
-    {{checkedIndex + 1}}/{{imgList.length}}
-  </p>
+  <p class="number-box">{{ checkedIndex + 1 }}/{{ imgList.length }}</p>
   <p class="btn-box">
     <button nz-button type="button" (click)="zoomOut()">
-      <i nz-icon nzType="zoom-in" nzTheme="outline"></i>放大</button>
+      <i nz-icon nzType="zoom-in" nzTheme="outline"></i>放大
+    </button>
     <button nz-button type="button" (click)="zoomIn()">
-      <i nz-icon nzType="zoom-out" nzTheme="outline"></i>缩小</button>
+      <i nz-icon nzType="zoom-out" nzTheme="outline"></i>缩小
+    </button>
     <button nz-button type="button" (click)="leftRotate()">
-      <i nz-icon nzType="undo" nzTheme="outline"></i>左旋转</button>
+      <i nz-icon nzType="undo" nzTheme="outline"></i>左旋转
+    </button>
     <button nz-button type="button" (click)="rightRotate()">
-      <i nz-icon nzType="redo" nzTheme="outline"></i>右旋转</button>
+      <i nz-icon nzType="redo" nzTheme="outline"></i>右旋转
+    </button>
+    <button nz-button type="button" (click)="">
+      <i nz-icon nzType="retweet" nzTheme="outline"></i>重置
+    </button>
   </p>
 </div>
