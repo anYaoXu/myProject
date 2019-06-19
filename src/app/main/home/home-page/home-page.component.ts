@@ -1,3 +1,4 @@
+import { UtilService } from './../../../core/util.service';
 
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem, DragDrop } from '@angular/cdk/drag-drop';
@@ -47,10 +48,14 @@ export class HomePageComponent implements OnInit {
   ];
   bj = 50;
   clickCount = 1;
-  constructor(private modalService: NzModalService) { }
+  constructor(private modalService: NzModalService,
+    private utilService: UtilService) { }
 
   ngOnInit() {
+    // 如果传.00 去掉
+    console.log(this.utilService.convertToDNum((123456.12).toString()));
   }
+
   showDialog() {
     const modal = this.modalService.create({
       nzTitle: '附件',
@@ -62,4 +67,5 @@ export class HomePageComponent implements OnInit {
       nzFooter: null
     });
   }
+
 }

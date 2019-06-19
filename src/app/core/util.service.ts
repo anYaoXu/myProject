@@ -239,4 +239,22 @@ export class UtilService {
             }
         });
     }
+    convertToDNum(number) {
+        const str1 = '千百十亿千百十万千百十元';
+        const strd = '角分';
+        const str2 = '零壹贰叁肆伍陆柒捌玖';
+        let strnum = number.toString();
+        let unit;
+        if (strnum.indexOf('.') > -1) {
+            strnum = strnum.replace('.', '');
+            unit = (str1 + strd).substr((str1 + strd).length - strnum.length);
+        } else {
+            unit = str1.substr(str1.length - strnum.length);
+        }
+        let str = '';
+        for (let i = 0; i < strnum.length; i++) {
+            str += str2.charAt(strnum[i]) + unit.charAt(i);
+        }
+        return str;
+    }
 }
