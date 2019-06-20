@@ -1,19 +1,25 @@
-<!-- <nz-list [nzDataSource]="data" nzSize="small" [nzHeader]="header" [nzFooter]="'Footer'" [nzRenderItem]="item">
+<!-- <nz-list
+  [nzDataSource]="data"
+  nzSize="small"
+  [nzHeader]="header"
+  [nzFooter]="'Footer'"
+  [nzRenderItem]="item"
+>
   <ng-template #header>
-    <span *ngFor="let header of costItem.header" >
-{{header.title}}
+    <span *ngFor="let header of costItem.header">
+      {{ header.title }}
     </span>
   </ng-template>
   <ng-template #item let-item>
     <nz-list-item [nzContent]="items">
       <ng-template #items>
-        <span style="color:red;">{{item.name}}</span>
-        <span style="color:green;">{{item.age}}</span>
+        <span style="color:red;">{{ item.name }}</span>
+        <span style="color:green;">{{ item.age }}</span>
       </ng-template>
     </nz-list-item>
   </ng-template>
 </nz-list> -->
-<!-- <div class="mytable">
+<div class="mytable">
   <nz-table #basicTable [nzData]="costItemData" [nzShowPagination]="false">
     <thead>
       <tr>
@@ -68,6 +74,6 @@
   <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
   <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
   <nz-option nzValue="disabled" nzLabel="Disabled" nzDisabled></nz-option>
-</nz-select> -->
+</nz-select>
 
 <button nz-button type="button" (click)="showDialog()">弹窗</button>

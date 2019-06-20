@@ -53,7 +53,7 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit() {
     // 如果传.00 去掉
-    console.log(this.utilService.convertToDNum((123456.12).toString()));
+    console.log(this.utilService.convertToDNum((-12034500.00).toString()));
   }
 
   showDialog() {
