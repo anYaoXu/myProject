@@ -60,7 +60,8 @@ export class HomePageComponent implements OnInit {
     const modal = this.modalService.create({
       nzTitle: '附件',
       nzWidth: 880,
-      nzStyle: { top: '10px' },
+      // nzStyle: { top: '10px' },
+      nzWrapClassName: 'vertical-center-modal',
       nzContent: HandelImgComponent,
       nzMaskClosable: false,
       nzClosable: true,
