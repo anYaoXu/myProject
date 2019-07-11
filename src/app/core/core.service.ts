@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { environment } from './../../environments/environment';
 import { en_US, NzI18nService, zh_CN } from 'ng-zorro-antd';
 import { TranslateService } from '@ngx-translate/core';
@@ -6,6 +6,12 @@ import { langInfoKey } from '../shared/shared.model';
 
 @Injectable()
 export class CoreService {
+  // 路由改变事件
+  routeChangeEvent = new EventEmitter();
+  // 全局列表
+  globalTableEvent = new EventEmitter();
+  // 导入事件
+  globalImportEvent = new EventEmitter();
   constructor(
     private translateService: TranslateService,
     private nzI18nService: NzI18nService

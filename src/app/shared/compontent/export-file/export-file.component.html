@@ -1,0 +1,51 @@
+<ng-container *ngIf="exportConfig.list?.length === 1">
+  <button type="button" nz-button class="btn-text" (click)="sureExport()">
+    <i class="icon-uk-bulkoutput f20 mr10"></i>
+    <span class="vat">批量导出</span>
+  </button>
+</ng-container>
+<ng-container *ngIf="exportConfig.list?.length !== 1">
+  <button
+    nz-button
+    type="button"
+    class="btn-text"
+    nz-popover
+    [nzTitle]="'批量导出'"
+    [nzContent]="exportTemplate"
+    (click)="showExportPop()"
+    [nzVisible]="exportShow"
+  >
+    <i class="icon-uk-bulkoutput f20 mr10"></i>
+    <span class="vat">批量导出</span>
+  </button>
+  <ng-template #exportTemplate>
+    <div>
+      <nz-radio-group [(ngModel)]="exportType">
+        <ng-container *ngFor="let item of exportConfig.list; index as i">
+          <div *ngIf="!item.onlyImport" [class.mt10]="i">
+            <label nz-radio [nzValue]="item.type">{{ item.label }}</label>
+          </div>
+        </ng-container>
+      </nz-radio-group>
+    </div>
+    <div class="mt10">
+      <button
+        nz-button
+        type="button"
+        class="small-btn"
+        (click)="exportShow = false"
+      >
+        取消
+      </button>
+      <button
+        nz-button
+        type="button"
+        class="small-btn"
+        [nzType]="'primary'"
+        (click)="sureExport()"
+      >
+        确定
+      </button>
+    </div>
+  </ng-template>
+</ng-container>

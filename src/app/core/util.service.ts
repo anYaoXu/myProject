@@ -135,8 +135,8 @@ export class UtilService {
         const data = null;
         delete params.id;
         return {
-            // data: JSON.stringify(UtilService.deepTrim(params)),
-            data: JSON.stringify(params),
+            data: JSON.stringify(UtilService.deepTrim(params)),
+            // data: JSON.stringify(params),
             req_type: '10',
             token: '',
             bodyparams: '',
@@ -202,6 +202,36 @@ export class UtilService {
                 uniqueList.push(item);
             }
         });
+    }
+    /***
+     * 深度trim
+     *  */
+    static deepTrim(obj) {
+        if (obj === null) {
+            return false;
+        }
+        let newObj = obj.constructor === Array ? [] : {};
+        if (typeof obj !== 'object') {
+            return;
+        } else {
+            for (const i in obj) {
+                if (obj.hasOwnProperty(i)) {
+                    let objValue = obj[i];
+                    if (typeof objValue === 'string') {
+                        objValue = objValue.trim();
+                    }
+                    if (objValue === undefined || objValue === null) {
+                        objValue = '';
+                    }
+                    // 过滤为空的参数
+                    if (objValue === '') {
+                        continue;
+                    }
+                    newObj[i] = typeof objValue === 'object' ? UtilService.deepTrim(objValue) : objValue;
+                }
+            }
+        }
+        return newObj;
     }
     /*
      *通用的post 请求

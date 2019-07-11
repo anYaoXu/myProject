@@ -9,6 +9,18 @@ export class MyBillComponent implements OnInit {
   array = [1, 2, 3, 4];
   dotPosition = 'true';
   effect = 'scrollx';
+  config = {
+    list: [
+      {
+        label: '列表',
+        type: 'xxxxx'
+      },
+      {
+        label: '列表1',
+        type: 'xxxxx'
+      }
+    ]
+  };
   constructor() { }
 
   ngOnInit() {
