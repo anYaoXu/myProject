@@ -1,3 +1,4 @@
+import { CoreService } from './../core/core.service';
 import { CoreModule } from './../core/core.module';
 import { MainService } from './main.service';
 import { UtilService } from './../core/util.service';
@@ -6,6 +7,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { navListKey, homeMenuListKey, customMenuListKey } from '../shared/shared.model';
 import { Router } from '@angular/router';
 import { homeMenuList } from './main.mode';
+import { NzModalService } from 'ng-zorro-antd';
 declare let $: any;
 
 @Component({
@@ -24,12 +26,21 @@ export class MainComponent implements OnInit {
   isReverseArrow = false;
   constructor(
     private mainService: MainService,
-    private router: Router
+    private router: Router,
+    private coreService: CoreService,
+    private modalService: NzModalService
   ) { }
   ngOnInit() {
     this.init();
   }
   init() {
+    // 路由改变时 改变导航栏状态
+    this.coreService.routeChangeEvent
+      .subscribe(() => {
+        this.modalService.closeAll();
+        this.initNavList();
+        this.initMenuList();
+      });
     this.initNavList();
     this.initMenuList();
   }

@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   }
   title = 'myProject';
   ngOnInit() {
+    this.coreService.watchRoute();
     this.coreService.initTranslateConfig();
   }
 }

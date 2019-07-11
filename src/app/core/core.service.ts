@@ -1,8 +1,11 @@
+import { filter, map } from 'rxjs/internal/operators';
 import { Injectable, EventEmitter } from '@angular/core';
 import { environment } from './../../environments/environment';
 import { en_US, NzI18nService, zh_CN } from 'ng-zorro-antd';
 import { TranslateService } from '@ngx-translate/core';
 import { langInfoKey } from '../shared/shared.model';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Injectable()
 export class CoreService {
@@ -14,7 +17,10 @@ export class CoreService {
   globalImportEvent = new EventEmitter();
   constructor(
     private translateService: TranslateService,
-    private nzI18nService: NzI18nService
+    private nzI18nService: NzI18nService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private titleService: Title
   ) { }
 
   static getDefaultLang() {
@@ -55,5 +61,23 @@ export class CoreService {
         break;
     }
     this.nzI18nService.setLocale(langFile);
+  }
+
+  // 对路由进行监听
+  watchRoute() {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+      map(() => this.activatedRoute),
+      map(route => {
+        while (route.firstChild) {
+          route = route.firstChild;
+        }
+        return route;
+      }),
+      filter(route => route.outlet === 'primary')
+    ).subscribe((route) => {
+      this.titleService.setTitle(route.snapshot.data['title']);
+      this.routeChangeEvent.emit();
+    });
   }
 }
