@@ -29,7 +29,7 @@ const HomeRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [HomeComponent, HomePageComponent, MyBillComponent, MyEnterpriseComponent,HandelImgComponent],
+  declarations: [HomeComponent, HomePageComponent, MyBillComponent, MyEnterpriseComponent, HandelImgComponent],
   imports: [
     CommonModule,
     NgZorroAntdModule,
