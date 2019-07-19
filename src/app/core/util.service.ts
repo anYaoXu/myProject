@@ -288,4 +288,75 @@ export class UtilService {
             .replace(/零([亿|万])/g, '$1').replace(/零+元/, '元').replace(/亿零{0,3}万/, '亿').replace(/^元/, '零元');
 
     }
+
+    // 数组去重(只针对普通数组，对象数组不起作用)
+    unique(arr) {
+        const newArr = Array.from(new Set(arr));
+        return newArr;
+    }
+    // 数组去重2 (只针对对象数组)
+    unique2(arr, key) {
+        return arr.reduce((arrc, currValue) => {
+            arrc.some(item => item[key] === currValue[key]) ? '' : arrc.push(currValue);
+            return arrc;
+        }, []);
+    }
+    // 数组去重3 (只针对对象数组)
+    unique3(arr, key) {
+        const obj = {};
+        return arr.reduce((arrc, currValue) => {
+            obj[currValue[key]] ? '' : obj[currValue[key]] = true && arrc.push(currValue);
+            return arrc;
+        }, []);
+    }
+    /**
+     * 对数组进行排序
+     * arr 原始数组
+     * rev 正序(true)或是倒叙(false)
+     * prop 首选排序字段
+     * prop2 当首选排序字段值一样时 次要排序字段
+    */
+    sort1(arr, rev, prop, prop2?) {
+        const _t = this;
+        return arr.sort(function (obj1, obj2) {
+            if (rev) {
+                rev = 1;
+            } else {
+                rev = (rev) ? 1 : -1;
+            }
+            let val1 = obj1[prop];
+            let val2 = obj2[prop];
+            if (!isNaN(Number(val1)) && !isNaN(Number(val2))) {
+                val1 = Number(val1);
+                val2 = Number(val2);
+            }
+            if (val1 < val2) {
+                return rev * -1;
+            } else if (val1 > val2) {
+                return rev * 1;
+            } else {
+                if (prop2) {
+                    let val3 = obj1[prop2];
+                    let val4 = obj2[prop2];
+                    if (!isNaN(Number(val3)) && !isNaN(Number(val4))) {
+                        val3 = Number(val3);
+                        val4 = Number(val4);
+                    }
+                    if (val3 < val4) {
+                        return -1;
+                    } else if (val3 > val4) {
+                        return 1;
+                    }
+
+                    // const a = [];
+                    // a.push(obj1);
+                    // a.push(obj2);
+                    // _t.sortb(a, prop2);
+                } else {
+                    return 0;
+                }
+
+            }
+        });
+    }
 }
